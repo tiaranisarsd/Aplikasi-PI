@@ -1,0 +1,234 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat',sans-serif;
+    margin: auto;
+}
+
+h1 {
+    color: #425c77;
+    font-weight: bold;
+    font-size:18px;
+}
+
+h2 {
+    color: #425c77;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+img {
+    vertical-align: middle;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.NavbarKmic{
+    padding-left: 10px;
+}
+
+.logo{
+    max-width: 100px;
+    max-height: 30%;
+    margin-top: 20px;
+    margin-left: 20px;
+    border-radius: 50%;
+}
+
+.navbar{
+    margin-bottom: 0%;
+}
+
+.menu{
+    margin-top: 60%;
+    padding-left: 5%;
+}
+
+/* Tambahkan CSS untuk slider */
+.mySlides {
+    display: none;
+}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+    max-width: 900px;
+    max-height: 300px;
+    position: relative; 
+    margin: auto;
+    overflow: hidden; 
+
+}
+
+.slide-image {
+    object-fit:none;
+    object-position: center;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+@keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+
+@media only screen and (max-width: 300px) {
+    .prev, .next,.text {font-size: 11px}
+}
+
+nav a {
+    font-size: 18px;
+    font-weight: 400;
+    text-decoration: none;
+
+    color: white;
+}
+
+nav a:hover {
+    font-weight: bold;
+}
+
+.featured-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
+}
+
+.card {
+    position: relative;
+    box-shadow: 1px 4px 8px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    margin: 3%;
+    padding: 3%;
+    padding-bottom: 50px;
+    
+    background-color: #e9eaf0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
+}
+
+.btn-daftar {
+    position: absolute;
+    left: 90%;
+    transform: translateX(-50%);
+    text-align: center;
+    background-color: #506d8b;
+    border-radius: 5px;
+    padding: 0.5rem 0.5rem;
+    object-position: center;
+    font-size: 12px;
+    width: 15%;
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.btn-daftar:hover {
+    background-color: #82a7ce;
+    color: white;
+    font-weight: bold;
+    
+    transition: translateY(-5px);
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
+}
+
+div p {
+    text-align: justify;
+}
+
+#content {
+    flex: 5;
+
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem 2rem;
+    margin: 10px;
+}
+
+
+main .list-kategori ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.list-kategori li {
+    background-color: #506d8b;
+    border-radius: 12px;
+    padding: 0.5rem 0.5rem;
+    margin-right: 15px;
+    font-size: 12px;
+    color: #ffffff;
+}
+
+.list-aturan li {
+    color: #394f66;
+    text-align: justify;
+    font-size: 12px;
+}
+
+table .table th td{
+    color: #394f66;
+}
+
+/* Tambahkan CSS berikut di file CSS Anda */
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.checkbox-item {
+    margin-right: 15px; /* Jarak horizontal antara checkbox */
+    margin-bottom: 15px; /* Jarak vertikal antara checkbox */
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-item input[type="checkbox"] {
+    margin-right: 5px; /* Jarak antara checkbox dan label teks */
+}
+
+
+
+
+
