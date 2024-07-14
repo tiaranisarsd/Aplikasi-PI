@@ -20,13 +20,13 @@ const DashboardList = () => {
         getCategory();
     }, []);
 
-    useEffect(() => {
-        if (lombaId) {
-            getCategoriesByLomba(lombaId);
-        } else {
-            getCategory();
-        }
-    }, [lombaId]);
+    // useEffect(() => {
+        // if (lombaId) {
+        //     getCategoriesByLomba(lombaId);
+        // } else {
+        //     getCategory();
+        // }
+    // }, [lombaId]);
 
     const getDashboard = async () => {
         try {
@@ -108,7 +108,7 @@ const DashboardList = () => {
                         <nav className="list-kategori">
                             <ul>
                                 {categories
-                                    .filter((category) => category.lombaId === item.lomba.id)
+                                    .filter((category) => category.lombaId === item.lomba.id && item.categoryId.includes(category.id.toString()))
                                     .map((filteredCategory) => (
                                         <li key={filteredCategory.id}>
                                             {filteredCategory.categoryName}

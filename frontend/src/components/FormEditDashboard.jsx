@@ -137,10 +137,12 @@ const FormEditDashboard = () => {
         const isChecked = e.target.checked;
 
         setSelectedCategories(prevSelected => {
+            const prevArray = Array.isArray(prevSelected) ? prevSelected : [];
+
             if (isChecked) {
-                return [...prevSelected, categoryId];
+                return [...prevArray, categoryId];
             } else {
-                return prevSelected.filter(id => id !== categoryId);
+                return prevArray.filter(id => id !== categoryId);
             }
         });
     };
