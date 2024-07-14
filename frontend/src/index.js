@@ -31,6 +31,7 @@ export const showSlides = (n) => {
     slides[i].style.display = "none";  
   }
 
+  slides[slideIndex - 1].style.display = "block";
 }
 
 export const currentSlide = (n) => {

@@ -88,16 +88,16 @@ export const deleteBanner = async (req, res) => {
 
 
 export const updateBanner = async (req, res) => {
-    const { id } = req.params;
     const { bannerName } = req.body;
     let imageBanner;
 
     try {
-        const banner = await Banner.findByPk(id);
-        if (!banner) {
-            return res.status(404).json({ message: "Banner not found" });
-        }
-
+        const banner = await Banner.findOne({
+            where: {
+                uuid: req.params.id
+            }
+        });
+        if (!banner) return res.status(404).json({ msg: "Data tidak ditemukan" });
         if (req.files && req.files.imageBanner) {
             const file = req.files.imageBanner;
             const fileName = Date.now() + '-' + file.name;

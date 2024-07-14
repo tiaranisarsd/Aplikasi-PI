@@ -189,8 +189,8 @@ DELETE http://localhost:5000/Dashboard/0204e099-b2a5-4feb-ac0d-1886b7fa62a9
 GET http://localhost:5000/Banner
 
 ###
-// Get Single Dashboard
-GET http://localhost:5000/dashboard/0204e099-b2a5-4feb-ac0d-1886b7fa62a9
+// Get Single banner
+GET http://localhost:5000/banner/a94420e0-9e7d-4ea9-afe3-605b60cc88aa
 
 
 ###
@@ -200,8 +200,19 @@ Content-Type: application/json
 
 {
 
-    "bannerName": "test 3",
+    "bannerName": "test 4",
     "imageBanner": "1720496226573-437123357.jpg"
+}
+
+###
+// Update Data Banner
+PATCH http://localhost:5000/banner/a94420e0-9e7d-4ea9-afe3-605b60cc88aa
+Content-Type: application/json
+
+{
+
+    "bannerName": "test 1",
+    "imageBanner": "1720962936493-392516406.jpg"
 }
 
 ###

@@ -49,7 +49,11 @@ const BannerList = () => {
                         <tr key={banner.uuid}>
                             <td>{index + 1}</td>
                             <td>{banner.bannerName}</td>
-                            <td>{banner.imageBanner}</td>
+                            <td>
+                            <a href={`http://localhost:5000/uploads/banner/${banner.imageBanner}`} target="_blank" rel="noopener noreferrer">
+                                {banner.imageBanner}
+                                </a>
+                            </td>
                             <td>
                                 <Link
                                     style={{ color: "white", marginRight: "3%" }}

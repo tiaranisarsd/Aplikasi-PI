@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
@@ -10,7 +11,7 @@ const DashboardList = () => {
     const [dashboard, setDashboard] = useState([]);
     const [categories, setCategories] = useState([]);
     const [banner, setBanners] = useState([]);
-    const [lombaId, setLombaId] = useState("");
+    const [ setLombaId] = useState("");
     const hslValue = 'hsl(200, 90%, 25%)';
 
     useEffect(() => {
@@ -41,6 +42,7 @@ const DashboardList = () => {
         try {
             const response = await axios.get("http://localhost:5000/banner");
             setBanners(response.data);
+            console.log("getBanner:", response.data);
         } catch (error) {
             console.error("Error fetching banners:", error);
         }
@@ -64,14 +66,14 @@ const DashboardList = () => {
         }
     };
 
-    const getCategoriesByLomba = async (lombaId) => {
-        try {
-            const response = await axios.get(`http://localhost:5000/category/lomba/${lombaId}`);
-            setCategories(response.data);
-        } catch (error) {
-            console.error("Error fetching categories by lomba:", error);
-        }
-    };
+    // const getCategoriesByLomba = async (lombaId) => {
+    //     try {
+    //         const response = await axios.get(`http://localhost:5000/category/lomba/${lombaId}`);
+    //         setCategories(response.data);
+    //     } catch (error) {
+    //         console.error("Error fetching categories by lomba:", error);
+    //     }
+    // };
 
     useEffect(() => {
         const interval = setInterval(() => {
