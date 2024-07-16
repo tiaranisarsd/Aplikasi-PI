@@ -14,7 +14,7 @@ const router = express.Router();
 router.get('/Dashboard', verifyUser, getDashboard);
 router.get('/Dashboard/:id', verifyUser, getDashboardById);
 router.post('/Dashboard', verifyUser, upload.single('imageUrl'), createDashboard);
-router.patch('/Dashboard/:id', verifyUser, updateDashboard);
+router.patch('/Dashboard/:id', verifyUser, upload.single('imageUrl'), updateDashboard);
 router.delete('/Dashboard/:id', verifyUser, deleteDashboard);
 
 export default router;

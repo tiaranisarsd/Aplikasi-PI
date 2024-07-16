@@ -13,13 +13,12 @@ const FormEditBanner = () => {
     useEffect(() => {
         const getBannerById = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/Banner/${id}`);
+                const response = await axios.get(`http://localhost:5000/banner/${id}`);
                 setBannerName(response.data.bannerName);
-                // Hanya set imageBanner jika ada imageUrl yang sudah ada di server
                 if (response.data.imageBanner) {
                     setImageBanner(response.data.imageBanner);
                 } else {
-                    setImageBanner(null); // Set null jika tidak ada gambar yang tersedia
+                    setImageBanner(null);
                 }
             } catch (error) {
                 if (error.response) {
@@ -32,19 +31,19 @@ const FormEditBanner = () => {
 
     const updateBanner = async (e) => {
         e.preventDefault();
+        const formData = new FormData();
+        formData.append("bannerName", bannerName);
+        if (imageBanner && imageBanner instanceof File) {
+            formData.append("imageBanner", imageBanner);
+        }
+
         try {
-            const formData = new FormData();
-            formData.append("bannerName", bannerName);
-            if (imageBanner) {
-                formData.append("imageBanner", imageBanner);
-            }
-
-            await axios.patch(`http://localhost:5000/Banner/${id}`, {
-              bannerName: bannerName,
-              imageBanner: imageBanner
-          });
-
-            navigate("/Banner");
+            await axios.patch(`http://localhost:5000/banner/${id}`, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+            navigate("/banner");
         } catch (error) {
             if (error.response) {
                 setMsg(error.response.data.msg);
@@ -65,7 +64,7 @@ const FormEditBanner = () => {
             <div className="card is-shadowless">
                 <div className="card-content">
                     <div className="content">
-                        <form onSubmit={updateBanner}>
+                        <form onSubmit={updateBanner} encType="multipart/form-data">
                             <p className="has-text-centered"> {msg} </p>
                             <div className="field">
                                 <label style={{ color: hslValue }} className="label">Nama Banner</label>
@@ -83,18 +82,23 @@ const FormEditBanner = () => {
                             <div className="field">
                                 <label style={{ color: hslValue }} className="label">Image</label>
                                 <div className="control">
-                                {imageBanner && (
-                                        <div style={{ marginBottom: '10px', marginTop: '10px' }}>
-                                            <img src={`http://localhost:5000/uploads/banner/${imageBanner}`} alt={imageBanner} style={{ maxWidth: '200px' }} />
-                                            <p>{imageBanner}</p>
-                                        </div>
-                                    )}
                                     <input
                                         type="file"
                                         className="input"
                                         onChange={handleImageChange}
                                         accept="image/*" // Hanya menerima file gambar
                                     />
+                                    {imageBanner && typeof imageBanner === 'object' && (
+                                        <div style={{ marginBottom: '10px', marginTop: '10px' }}>
+                                            <img src={URL.createObjectURL(imageBanner)} alt="Selected" style={{ maxWidth: '200px' }} />
+                                        </div>
+                                    )}
+                                    {imageBanner && typeof imageBanner === 'string' && (
+                                        <div style={{ marginBottom: '10px', marginTop: '10px' }}>
+                                            <img src={`http://localhost:5000/uploads/banner/${imageBanner}`} alt={imageBanner} style={{ maxWidth: '200px' }} />
+                                            <p>{imageBanner}</p>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                             <div className="field">

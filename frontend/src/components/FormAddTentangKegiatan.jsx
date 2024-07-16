@@ -7,11 +7,11 @@ import 'react-quill/dist/quill.snow.css';
 
 const FormAddTentangKegiatan = () => {
     const hslValue = 'hsl(200, 90%, 25%)';
-    const [ setTentangKegiatan] = useState([]);
+    const [setTentangKegiatan] = useState("");
     const [judulKegiatan, setJudulKegiatan] = useState("");
     const [keterangan, setKeterangan] = useState("");
     const [tanggal, setTanggal] = useState("");
-    const [image, setImage] = useState("");
+    const [image, setImage] = useState(null);
     const [msg, setMsg] = useState("");
     const navigate = useNavigate();
 
@@ -65,7 +65,7 @@ const FormAddTentangKegiatan = () => {
 
     return (
         <div>
-            <h1 style={{ marginTop: '10%', marginLeft: '1%', color: hslValue }} className="title"> Tentang Kegiatan</h1>
+            <h1 style={{ marginTop: '10%', marginLeft: '1%', color: hslValue }} className="title"> Tentang Kegiatan Admin</h1>
             <h2 style={{marginLeft: '1%', color: hslValue }} className="subtitle"> Tambah Informasi Kegiatan Baru</h2>
             <div className="card is-shadowless">
                 <div className="card-content">
@@ -75,17 +75,18 @@ const FormAddTentangKegiatan = () => {
                             <div className="field">
                                 <label style={{color: hslValue}} className="label">Nama Kegiatan</label>
                                 <div className="control">
-                                <textarea
+                                    <textarea
                                         type="text"
                                         className="textarea"
                                         value={judulKegiatan}
                                         onChange={(e) => setJudulKegiatan(e.target.value)}
                                         placeholder='Nama Kegiatan'
+                                        required
                                     />
                                 </div>
                             </div>
                             <div className="field">
-                                <label style={{ color: hslValue }} className="label">Image</label>
+                                <label style={{ color: hslValue }} className="label">Gambar</label>
                                 <div className="control">
                                     <input
                                         type="file"
@@ -93,18 +94,21 @@ const FormAddTentangKegiatan = () => {
                                         onChange={handleImageChange}
                                         required
                                     />
+                                      {image && typeof image === 'object' && (
+                                        <img src={URL.createObjectURL(image)} alt="Selected" style={{ marginBottom: '10px', marginTop: '10px',  maxWidth: '200px' }} />
+                                    )}
                                 </div>
                             </div>
 
                             <div className="field">
                                 <label style={{color: hslValue}} className="label">Tanggal</label>
                                 <div className="control">
-                                <textarea
+                                    <input
                                         type="date"
-                                        className="date"
+                                        className="input"
                                         value={tanggal}
                                         onChange={(e) => setTanggal(e.target.value)}
-                                        placeholder='Tanggal'
+                                        required
                                     />
                                 </div>
                             </div>

@@ -13,8 +13,8 @@ const router = express.Router();
 
 router.get('/Banner', verifyUser, getAllBanner);
 router.get('/Banner/:id', verifyUser, getBannerById);
-router.post('/Banner', verifyUser,bannerUpload.single('imageBanner'), createBanner);
-router.patch('/Banner/:id', verifyUser, updateBanner);
+router.post('/Banner', verifyUser, bannerUpload.single('imageBanner'), createBanner);
+router.patch('/Banner/:id', verifyUser, bannerUpload.single('imageBanner'), updateBanner);
 router.delete('/Banner/:id', verifyUser, deleteBanner);
 
 export default router;

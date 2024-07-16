@@ -31,20 +31,20 @@ const DokumentasiAdmin = () => {
     return (
         <div>
             <h1 style={{marginTop: '10%', marginLeft: '1%', color: hslValue }} className="title">
-                Dokumentasi List
+                Dokumentasi Admin
             </h1>
             <h2 style={{ marginLeft: '1%', color: hslValue }} className="subtitle">
-                List of Dokumentasi
+                Daftar Dokumentasi
             </h2>
             <Link to="/dokumentasi/add" className="button is-primary mb-2">
-                Add Dokumentasi
+                Tambah Dokumentasi
             </Link>
             <table className="table is-striped is-fullwidth">
                 <thead>
                     <tr>
                         <th>No</th>
                         <th>Nama Kegiatan</th>
-                        <th>Image</th>
+                        <th>Gambar</th>
                         <th>Actions</th>
                     </tr>
                 </thead>

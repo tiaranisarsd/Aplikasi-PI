@@ -10,7 +10,7 @@ const FormEditDashboard = () => {
     const [category, setCategory] = useState([]);
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [lombaId, setLombaId] = useState("");
-    const [imageUrl, setImageUrl] = useState("");
+    const [imageUrl, setImageUrl] = useState(""); // Simpan imageUrl sebagai string
     const [aturanLomba, setAturanLomba] = useState("");
     const [msg, setMsg] = useState("");
     const navigate = useNavigate();
@@ -23,7 +23,7 @@ const FormEditDashboard = () => {
                 console.log("Dashboard Response:", response.data);
                 if (response.data) {
                     setLombaId(response.data.lomba.id);
-                    setImageUrl(response.data.imageUrl || "");
+                    setImageUrl(response.data.imageUrl || ""); // Set imageUrl dari response sebagai string
                     setAturanLomba(response.data.aturanLomba);
                     setSelectedCategories(response.data.categoryId || []);
 
@@ -69,7 +69,7 @@ const FormEditDashboard = () => {
 
     const getCategory = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/Category");
+            const response = await axios.get("http://localhost:5000/category");
             console.log("Category Response:", response.data);
             setCategory(response.data);
         } catch (error) {
@@ -93,22 +93,22 @@ const FormEditDashboard = () => {
             setMsg("Lomba belum dipilih.");
             return;
         }
+
         try {
             const formData = new FormData();
             formData.append("lombaId", lombaId);
 
-            if (imageUrl) {
+            if (typeof imageUrl === 'object') { // Cek apakah imageUrl adalah object (baru)
                 formData.append("imageUrl", imageUrl);
             }
 
             formData.append("categoryId", JSON.stringify(selectedCategories));
             formData.append("aturanLomba", aturanLomba);
 
-            const response = await axios.patch(`http://localhost:5000/dashboard/${id}`, {
-                lombaId: lombaId,
-                imageUrl: imageUrl,
-                categoryId:JSON.stringify(selectedCategories),
-                aturanLomba: aturanLomba,
+            const response = await axios.patch(`http://localhost:5000/dashboard/${id}`, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
             });
 
             if (response.status === 200) {
@@ -153,7 +153,7 @@ const FormEditDashboard = () => {
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
-        setImageUrl(file);
+        setImageUrl(file); // Set image baru yang dipilih ke state imageUrl
     };
 
     return (
@@ -186,19 +186,24 @@ const FormEditDashboard = () => {
                             </div>
 
                             <div className="field">
-                                <label style={{ color: hslValue }} className="label">Image</label>
+                                <label style={{ color: hslValue }} className="label">Gambar</label>
                                 <div className="control">
-                                    {imageUrl && (
-                                        <div style={{ marginBottom: '10px', marginTop: '10px' }}>
-                                            <img src={`http://localhost:5000/uploads/${imageUrl}`} alt={imageUrl} style={{ maxWidth: '200px' }} />
-                                            <p>{imageUrl}</p>
-                                        </div>
-                                    )}
                                     <input
                                         type="file"
                                         className="input"
                                         onChange={handleImageChange}
                                     />
+                                        {imageUrl && typeof imageUrl === 'object' && (
+                                        <div style={{ marginBottom: '10px', marginTop: '10px' }}>
+                                            <img src={URL.createObjectURL(imageUrl)} alt="Selected" style={{ maxWidth: '200px' }} />
+                                        </div>
+                                    )}
+                                    {imageUrl && typeof imageUrl === 'string' && (
+                                        <div style={{ marginBottom: '10px', marginTop: '10px' }}>
+                                            <img src={`http://localhost:5000/uploads/${imageUrl}`} alt={imageUrl} style={{ maxWidth: '200px' }} />
+                                            <p>{imageUrl}</p>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
 

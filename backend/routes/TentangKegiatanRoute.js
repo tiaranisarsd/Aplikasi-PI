@@ -14,7 +14,7 @@ const router = express.Router();
 router.get('/TentangKegiatan', verifyUser, getTentangKegiatan);
 router.get('/TentangKegiatan/:id', verifyUser, getTentangKegiatanById);
 router.post('/TentangKegiatan', verifyUser, tentangKegiatanUpload.single('image'), createTentangKegiatan);
-router.patch('/TentangKegiatan/:id', verifyUser, updateTentangKegiatan);
+router.patch('/TentangKegiatan/:id',verifyUser, tentangKegiatanUpload.single('image'), updateTentangKegiatan);
 router.delete('/TentangKegiatan/:id', verifyUser, deleteTentangKegiatan);
 
 export default router;

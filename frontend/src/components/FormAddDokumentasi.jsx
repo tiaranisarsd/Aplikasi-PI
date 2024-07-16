@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 
 const FormAddDokumentasi = () => {
     const hslValue = 'hsl(200, 90%, 25%)';
-    const [ setDokumentasi] = useState([]);
+    const [setDokumentasi] = useState("");
     const [kegiatanName, setKegiatanName] = useState("");
-    const [imageKegiatan, setImageKegiatan] = useState("");
+    const [imageKegiatan, setImageKegiatan] = useState(null); // Menggunakan null sebagai nilai awal
     const [msg, setMsg] = useState("");
     const navigate = useNavigate();
 
@@ -36,6 +36,8 @@ const FormAddDokumentasi = () => {
         } catch (error) {
             if (error.response) {
                 setMsg(error.response.data.msg);
+            } else {
+                setMsg("Terjadi kesalahan saat menyimpan dokumentasi.");
             }
         }
     };
@@ -55,8 +57,8 @@ const FormAddDokumentasi = () => {
 
     return (
         <div>
-            <h1 style={{ marginTop: '10%', marginLeft: '1%', color: hslValue }} className="title"> Dokumentasi</h1>
-            <h2 style={{marginLeft: '1%', color: hslValue }} className="subtitle"> Tambah Dokumentasi Baru</h2>
+            <h1 style={{ marginTop: '10%', marginLeft: '1%', color: hslValue }} className="title"> Dokumentasi Admin</h1>
+            <h2 style={{ marginLeft: '1%', color: hslValue }} className="subtitle"> Tambah Dokumentasi Baru</h2>
             <div className="card is-shadowless">
                 <div className="card-content">
                     <div className="content">
@@ -65,24 +67,28 @@ const FormAddDokumentasi = () => {
                             <div className="field">
                                 <label style={{color: hslValue}} className="label">Nama Kegiatan</label>
                                 <div className="control">
-                                <textarea
-                                        type="text"
+                                    <textarea
                                         className="textarea"
                                         value={kegiatanName}
                                         onChange={(e) => setKegiatanName(e.target.value)}
                                         placeholder='Nama Kegiatan'
+                                        required
                                     />
                                 </div>
                             </div>
                             <div className="field">
-                                <label style={{ color: hslValue }} className="label">Image</label>
+                                <label style={{ color: hslValue }} className="label">Gambar</label>
                                 <div className="control">
                                     <input
                                         type="file"
                                         className="input"
                                         onChange={handleImageChange}
+                                        accept="image/*"
                                         required
                                     />
+                                     {imageKegiatan && typeof imageKegiatan === 'object' && (
+                                        <img src={URL.createObjectURL(imageKegiatan)} alt="Selected" style={{ marginBottom: '10px', marginTop: '10px',  maxWidth: '200px' }} />
+                                    )}
                                 </div>
                             </div>
 

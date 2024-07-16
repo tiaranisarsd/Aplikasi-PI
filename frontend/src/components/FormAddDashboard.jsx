@@ -96,8 +96,8 @@ const FormAddDashboard = () => {
 
     return (
         <div>
-            <h1 style={{ marginTop: '10%', marginLeft: '1%', color: hslValue }} className="title">Tambah Dashboard</h1>
-            <h2 style={{ marginLeft: '1%', color: hslValue }} className="subtitle">Add New Dashboard</h2>
+            <h1 style={{ marginTop: '10%', marginLeft: '1%', color: hslValue }} className="title"> Dashboard Admin</h1>
+            <h2 style={{ marginLeft: '1%', color: hslValue }} className="subtitle">Tambah Dashboard Baru</h2>
             <div className="card is-shadowless">
                 <div className="card-content">
                     <div className="content">
@@ -124,16 +124,16 @@ const FormAddDashboard = () => {
                             </div>
 
                             <div className="field">
-                                <label style={{ color: hslValue }} className="label">Image</label>
+                                <label style={{ color: hslValue }} className="label">Gambar</label>
                                 <div className="control">
-                                {imageUrl && typeof imageUrl === 'object' && (
-                                        <img src={URL.createObjectURL(imageUrl)} alt="Selected" style={{ marginBottom: '10px', maxWidth: '200px' }} />
-                                    )}
                                     <input
                                         type="file"
                                         className="input"
                                         onChange={handleImageChange}
                                     />
+                                    {imageUrl && typeof imageUrl === 'object' && (
+                                        <img src={URL.createObjectURL(imageUrl)} alt="Selected" style={{ marginBottom: '10px', marginTop: '10px', maxWidth: '200px' }} />
+                                    )}
                                 </div>
                             </div>
 

@@ -28,23 +28,30 @@ const TentangKegiatanAdmin = () => {
         }
     };
 
+        // Fungsi untuk memformat tanggal
+        const formatTanggal = (dateString) => {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('id-ID', options);
+        };
+    
+
     return (
         <div>
             <h1 style={{marginTop: '10%', marginLeft: '1%', color: hslValue }} className="title">
-                TentangKegiatan List
+                Tentang Kegiatan Admin
             </h1>
             <h2 style={{ marginLeft: '1%', color: hslValue }} className="subtitle">
-                List of TentangKegiatan
+                Daftar Tentang Kegiatan
             </h2>
             <Link to="/tentangKegiatan/add" className="button is-primary mb-2">
-                Tambah Tentang Kegiatan
+                Tambah Informasi Kegiatan
             </Link>
             <table className="table is-striped is-fullwidth">
                 <thead>
                     <tr>
                         <th>No</th>
                         <th>Judul Kegiatan</th>
-                        <th>Image</th>
+                        <th>Gambar</th>
                         <th>Tanggal</th>
                         <th>Actions</th>
                     </tr>
@@ -59,7 +66,7 @@ const TentangKegiatanAdmin = () => {
                                 {tentangKegiatan.image}
                             </a>
                             </td>
-                            <td>{tentangKegiatan.tanggal}</td>
+                            <td>{formatTanggal(tentangKegiatan.tanggal)}</td>
                             <td>
                                 <Link
                                     to={`/tentangKegiatan/edit/${tentangKegiatan.uuid}`}

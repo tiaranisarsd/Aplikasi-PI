@@ -11,7 +11,6 @@ const TentangKegiatan = () => {
         getTentangKegiatan();
     }, []);
 
-
     const getTentangKegiatan = async () => {
         try {
             const response = await axios.get("http://localhost:5000/tentangKegiatan");
@@ -21,6 +20,11 @@ const TentangKegiatan = () => {
         }
     };
 
+    // Fungsi untuk memformat tanggal
+    const formatTanggal = (dateString) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString('id-ID', options);
+    };
 
     return (
         <div>
@@ -31,12 +35,12 @@ const TentangKegiatan = () => {
                 {TentangKegiatan.map((item, index) => (
                     <article key={index} className="card">
                         <h1 style={{ color: hslValue }} className="title">{item.judulKegiatan}</h1>
-                        <img src={`http://localhost:5000/uploads/tentangKegiatan${item.image}`} alt={item.image} className="featured-image" />
-                        <h2>Tanggal: {item.tanggal}</h2>
-                        <h2>keterangan :</h2>
-                        <nav className="list-aturan">
+                        <img src={`http://localhost:5000/uploads/tentangKegiatan/${item.image}`} alt={item.image} className="featured-image" />
+                        <h2>Tanggal: {formatTanggal(item.tanggal)}</h2>
+                        <h2>Keterangan :</h2>
+                        <nav className="keterangan">
                             <ol>
-                                <li dangerouslySetInnerHTML={{ __html: item.aturanLomba }} />
+                                <li dangerouslySetInnerHTML={{ __html: item.keterangan }} />
                             </ol>
                         </nav>
                     </article>

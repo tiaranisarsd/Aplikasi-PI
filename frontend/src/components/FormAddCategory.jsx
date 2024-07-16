@@ -40,15 +40,15 @@ const FormAddCategory = () => {
 
   return (
     <div>
-        <h1 style={{marginTop: '10%', marginLeft: '1%', color: hslValue}} className='title'>Category</h1>
-        <h2 style={{marginLeft: '1%', color: hslValue}} className='subtitle'>Add New Category</h2>
+        <h1 style={{marginTop: '10%', marginLeft: '1%', color: hslValue}} className='title'>Kategori</h1>
+        <h2 style={{marginLeft: '1%', color: hslValue}} className='subtitle'>Tambah Category Baru</h2>
         <div className="card is-shadowless">
             <div className="card-content">
                 <div className="content">
                 <form onSubmit={saveCategory}>
                     <p className="has-text-centered"> {msg} </p>
                 <div className="field">
-                    <label style={{color: hslValue}} className="label">Category Name</label>
+                    <label style={{color: hslValue}} className="label">Nama Kategori</label>
                     <div className="control">
                         <textarea
                         type="text" 

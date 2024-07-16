@@ -39,7 +39,7 @@ const FormAddBanner = () => {
     return (
         <div>
             <h1 style={{ marginTop: '10%', marginLeft: '1%', color: hslValue }} className='title'>Banner</h1>
-            <h2 style={{ marginLeft: '1%', color: hslValue }} className='subtitle'>Add New Banner</h2>
+            <h2 style={{ marginLeft: '1%', color: hslValue }} className='subtitle'>Tambah Banner Baru</h2>
             <div className="card is-shadowless">
                 <div className="card-content">
                     <div className="content">
@@ -59,7 +59,7 @@ const FormAddBanner = () => {
                                 </div>
                             </div>
                             <div className="field">
-                                <label style={{ color: hslValue }} className="label">Image</label>
+                                <label style={{ color: hslValue }} className="label">Gambar</label>
                                 <div className="control">
                                     <input
                                         type="file"

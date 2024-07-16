@@ -63,11 +63,11 @@ const FormEditCategory = () => {
                 <form onSubmit={updateCategory}>
                     <p className="has-text-centered"> {msg} </p>
                 <div className="field">
-                    <label className="label">Nama Category</label>
+                    <label style={{color: hslValue}} className="label">Nama Kategori</label>
                     <div className="control">
-                        <input 
+                        <textarea 
                         type="text" 
-                        className="input"
+                        className="textarea"
                         value={categoryName}
                         key={categoryId}
                         onChange={(e) => setName(e.target.value)}
@@ -79,7 +79,7 @@ const FormEditCategory = () => {
                 <div className="field">
                     <div className="control">
                     <button style={{ color: "white" }} type="submit" className="button is-success">
-                        Update
+                        Simpan
                         </button>
                     </div>
                 </div>

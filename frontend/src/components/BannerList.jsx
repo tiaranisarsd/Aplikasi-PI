@@ -31,7 +31,7 @@ const BannerList = () => {
     return (
         <div>
             <h1 style={{ marginTop: '10%', marginLeft: '1%', color: hslValue }} className='title'>Banner</h1>
-            <h2 style={{ marginLeft: '1%', color: hslValue }} className='subtitle'>List of Banner</h2>
+            <h2 style={{ marginLeft: '1%', color: hslValue }} className='subtitle'>Daftar Banner</h2>
             <Link style={{ color: "white" }} to="/Banner/add" className="button is-primary mb-2">
                 Tambah Banner
             </Link>

@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const FormEditDokumentasi = () => {
     const [kegiatanName, setKegiatanName] = useState("");
-    const [imageKegiatan, setImageKegiatan] = useState("");
+    const [imageKegiatan, setImageKegiatan] = useState(null);
     const [msg, setMsg] = useState("");
     const navigate = useNavigate();
     const { id } = useParams();
@@ -13,37 +13,42 @@ const FormEditDokumentasi = () => {
 
     useEffect(() => {
         const getDokumentasiById = async () => {
-          try {
-            const response = await axios.get(
-              `http://localhost:5000/dokumentasi/${id}`
-            );
-            setKegiatanName(response.data.kegiatanName);
-            setImageKegiatan(response.data.imageKegiatan);
-          } catch (error) {
-            if (error.response) {
-              setMsg(error.response.data.msg);
+            try {
+                const response = await axios.get(`http://localhost:5000/dokumentasi/${id}`);
+                setKegiatanName(response.data.kegiatanName);
+                setImageKegiatan(response.data.imageKegiatan);
+            } catch (error) {
+                if (error.response) {
+                    setMsg(error.response.data.msg);
+                }
             }
-          }
         };
         getDokumentasiById();
-      }, [id]);
+    }, [id]);
 
     const updateDokumentasi = async (e) => {
         e.preventDefault();
-        try {
-          await axios.patch(`http://localhost:5000/Dokumentasi/${id}`, {
-            kegiatanName: kegiatanName,
-            imageKegiatan: imageKegiatan,
-          });
-          navigate("/Dokumentasi");
-        } catch (error) {
-          if (error.response) {
-            setMsg(error.response.data.msg);
-          }
+        const formData = new FormData();
+        formData.append("kegiatanName", kegiatanName);
+        if (imageKegiatan instanceof File) {
+            formData.append("imageKegiatan", imageKegiatan);
         }
-      };
 
-
+        try {
+            await axios.patch(`http://localhost:5000/dokumentasi/${id}`, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+            navigate("/dokumentasi");
+        } catch (error) {
+            if (error.response) {
+                setMsg(error.response.data.msg);
+            } else {
+                setMsg("An error occurred while updating the documentation.");
+            }
+        }
+    };
 
     const handleImageChange = (e) => {
         setImageKegiatan(e.target.files[0]);
@@ -52,21 +57,21 @@ const FormEditDokumentasi = () => {
     return (
         <div>
             <h1 style={{ marginTop: '10%', marginLeft: '1%', color: hslValue }} className="title"> Dokumentasi</h1>
-            <h2 style={{marginLeft: '1%', color: hslValue }} className="subtitle"> Tambah Dokumentasi Baru</h2>
+            <h2 style={{ marginLeft: '1%', color: hslValue }} className="subtitle"> Edit Dokumentasi</h2>
             <div className="card is-shadowless">
                 <div className="card-content">
                     <div className="content">
                         <form onSubmit={updateDokumentasi} encType="multipart/form-data">
                             {msg && <p className="has-text-centered" style={{ color: 'red' }}>{msg}</p>}
                             <div className="field">
-                                <label style={{color: hslValue}} className="label">Nama Kegiatan</label>
+                                <label style={{ color: hslValue }} className="label">Nama Kegiatan</label>
                                 <div className="control">
-                                <textarea
-                                        type="text"
+                                    <textarea
                                         className="textarea"
                                         value={kegiatanName}
                                         onChange={(e) => setKegiatanName(e.target.value)}
                                         placeholder='Nama Kegiatan'
+                                        required
                                     />
                                 </div>
                             </div>
@@ -77,8 +82,19 @@ const FormEditDokumentasi = () => {
                                         type="file"
                                         className="input"
                                         onChange={handleImageChange}
-                                        required
+                                        accept="image/*"
                                     />
+                                    {imageKegiatan && typeof imageKegiatan === 'object' && (
+                                        <div style={{ marginBottom: '10px', marginTop: '10px' }}>
+                                            <img src={URL.createObjectURL(imageKegiatan)} alt="Selected" style={{ maxWidth: '200px' }} />
+                                        </div>
+                                    )}
+                                    {imageKegiatan && typeof imageKegiatan === 'string' && (
+                                        <div style={{ marginBottom: '10px', marginTop: '10px' }}>
+                                            <img src={`http://localhost:5000/uploads/dokumentasi/${imageKegiatan}`} alt={imageKegiatan} style={{ maxWidth: '200px' }} />
+                                            <p>{imageKegiatan}</p>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
 
@@ -96,6 +112,5 @@ const FormEditDokumentasi = () => {
         </div>
     );
 };
-
 
 export default FormEditDokumentasi;

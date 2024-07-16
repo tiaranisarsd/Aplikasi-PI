@@ -88,9 +88,6 @@ export const deleteBanner = async (req, res) => {
 
 
 export const updateBanner = async (req, res) => {
-    const { bannerName } = req.body;
-    let imageBanner;
-
     try {
         const banner = await Banner.findOne({
             where: {
@@ -98,31 +95,26 @@ export const updateBanner = async (req, res) => {
             }
         });
         if (!banner) return res.status(404).json({ msg: "Data tidak ditemukan" });
-        if (req.files && req.files.imageBanner) {
-            const file = req.files.imageBanner;
-            const fileName = Date.now() + '-' + file.name;
-            const uploadPath = path.join(__dirname, '../uploads/banner', fileName);
 
-            file.mv(uploadPath, async (err) => {
-                if (err) return res.status(500).json({ message: err.message });
+        const { bannerName } = req.body;
 
-                // Delete old image if it exists
-                if (banner.imageBanner) {
-                    const oldImagePath = path.join(__dirname, '../uploads/banner', path.basename(banner.imageBanner));
-                    fs.unlink(oldImagePath, (err) => {
-                        if (err) console.error("Failed to delete old image:", err);
-                    });
-                }
-
-                imageBanner = `http://localhost:5000/uploads/banner/${fileName}`;
-                await banner.update({ bannerName, imageBanner });
-                res.json(banner);
-            });
-        } else {
-            await banner.update({ bannerName });
-            res.json(banner);
+        // Handle image update
+        if (req.file) {
+            const oldImagePath = path.join(process.cwd(), 'uploads', 'banner', banner.imageBanner);
+            if (fs.existsSync(oldImagePath)) {
+                fs.unlinkSync(oldImagePath); // Hapus gambar lama
+            }
+            banner.imageBanner = req.file.filename; // Simpan nama file baru
         }
+
+        // Update data banner
+        banner.bannerName = bannerName;
+
+        await banner.save(); // Simpan perubahan ke database
+
+        res.status(200).json({ msg: "Banner berhasil diperbarui" });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        console.error("Error in updateBanner:", error);
+        res.status(500).json({ msg: error.message });
     }
 };

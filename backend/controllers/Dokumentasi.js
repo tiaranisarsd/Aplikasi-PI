@@ -61,11 +61,11 @@ export const updateDokumentasi = async (req, res) => {
 
         // Handle image update
         if (req.file) {
-            const imagePath = path.join(process.cwd(), 'dokumentasi', dokumentasi.imageKegiatan);
-            if (fs.existsSync(imagePath)) {
-                fs.unlinkSync(imagePath);
+            const oldImagePath = path.join(process.cwd(), 'uploads', 'dokumentasi', dokumentasi.imageKegiatan);
+            if (fs.existsSync(oldImagePath)) {
+                fs.unlinkSync(oldImagePath); // Hapus gambar lama
             }
-            dokumentasi.imageKegiatan = req.file.filename;
+            dokumentasi.imageKegiatan = req.file.filename; // Simpan nama file baru
         }
 
         // Update data dokumentasi
@@ -79,7 +79,6 @@ export const updateDokumentasi = async (req, res) => {
         res.status(500).json({ msg: error.message });
     }
 };
-
 
 export const deleteDokumentasi = async (req, res) => {
     try {

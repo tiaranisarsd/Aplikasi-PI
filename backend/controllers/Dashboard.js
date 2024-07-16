@@ -81,35 +81,38 @@ export const updateDashboard = async (req, res) => {
                 uuid: req.params.id
             }
         });
-        if (!dashboard) return res.status(404).json({ msg: "Data tidak ditemukan" });
+        if (!dashboard) {
+            return res.status(404).json({ msg: "Data tidak ditemukan" });
+        }
 
-        const { lombaId, categoryId, aturanLomba } = req.body;
-        let parsedCategoryId;
+        const { lombaId, aturanLomba } = req.body;
+        let { categoryId } = req.body;
 
-        if (Array.isArray(categoryId)) {
-            parsedCategoryId = categoryId;
-        } else {
+        // Handle multiple categoryIds
+        if (!Array.isArray(categoryId)) {
             try {
-                parsedCategoryId = JSON.parse(categoryId);
+                categoryId = JSON.parse(categoryId);
             } catch (error) {
-                console.error("Error parsing categoryId in updateDashboard:", error);
+                console.error("Error parsing categoryId:", error);
                 return res.status(400).json({ msg: "Invalid categoryId format" });
             }
         }
 
+        // Handle image update
         if (req.file) {
             const imagePath = path.join(process.cwd(), 'uploads', dashboard.imageUrl);
             if (fs.existsSync(imagePath)) {
-                fs.unlinkSync(imagePath);
+                fs.unlinkSync(imagePath); // Hapus gambar lama
             }
-            dashboard.imageUrl = req.file.filename;
+            dashboard.imageUrl = req.file.filename; // Simpan nama file baru
         }
 
+        // Update data dashboard
         dashboard.lombaId = parseInt(lombaId);
-        dashboard.categoryId = parsedCategoryId;
+        dashboard.categoryId = categoryId;
         dashboard.aturanLomba = aturanLomba;
 
-        await dashboard.save();
+        await dashboard.save(); // Simpan perubahan ke database
 
         res.status(200).json({ msg: "Data Dashboard berhasil diperbarui" });
     } catch (error) {

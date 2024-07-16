@@ -31,13 +31,13 @@ const DashboardList = () => {
     return (
         <div>
             <h1 style={{marginTop: '10%', marginLeft: '1%', color: hslValue }} className="title">
-                Dashboard List
+                Dashboard Admin
             </h1>
             <h2 style={{ marginLeft: '1%', color: hslValue }} className="subtitle">
-                List of Dashboard
+                Daftar Dashboard
             </h2>
             <Link to="/dashboard/add" className="button is-primary mb-2">
-                Add Dashboard
+                Tambah Dashboard
             </Link>
             <table className="table is-striped is-fullwidth">
                 <thead>

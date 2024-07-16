@@ -56,18 +56,18 @@ const FormEditLomba = () => {
   return (
     <div>
         <h1 style={{ marginTop: '10%', marginLeft: '1%', color: hslValue }} className='title'>Lomba</h1>
-        <h2 style={{ marginTop: '10%', marginLeft: '1%', color: hslValue }} className='subtitle'>Edit Lomba</h2>
+        <h2 style={{ marginLeft: '1%', color: hslValue }} className='subtitle'>Edit Lomba</h2>
         <div className="card is-shadowless">
             <div className="card-content">
                 <div className="content">
                 <form onSubmit={updateLomba}>
                     <p className="has-text-centered"> {msg} </p>
                 <div className="field">
-                    <label className="label">Nama Lomba</label>
+                    <label style={{color: hslValue}} className="label">Nama Lomba</label>
                     <div className="control">
-                        <input 
+                        <textarea
                         type="text" 
-                        className="input"
+                        className="textarea"
                         value={lombaName}
                         key={lombaId}
                         onChange={(e) => setName(e.target.value)}

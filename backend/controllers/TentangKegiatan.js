@@ -51,38 +51,37 @@ export const createTentangKegiatan = async (req, res) => {
 
 export const updateTentangKegiatan = async (req, res) => {
     try {
-        const tentangKagiatan = await TentangKegiatan.findOne({
+        const tentangKegiatan = await TentangKegiatan.findOne({
             where: {
                 uuid: req.params.id
             }
         });
-        if (!tentangKagiatan) return res.status(404).json({ msg: "Data tidak ditemukan" });
+        if (!tentangKegiatan) return res.status(404).json({ msg: "Data tidak ditemukan" });
 
         const { judulKegiatan, tanggal, keterangan } = req.body;
 
         // Handle image update
         if (req.file) {
-            const imagePath = path.join(process.cwd(), 'tentangKegiatan', tentangKagiatan.image);
+            const imagePath = path.join(process.cwd(), 'uploads/tentangKegiatan', tentangKegiatan.image);
             if (fs.existsSync(imagePath)) {
                 fs.unlinkSync(imagePath);
             }
-            tentangKagiatan.image = req.file.filename;
+            tentangKegiatan.image = req.file.filename;
         }
 
-        // Update data tentangKagiatan
-        tentangKagiatan.judulKegiatan = judulKegiatan;
-        tentangKagiatan.tanggal = tanggal;
-        tentangKagiatan.keterangan = keterangan;
+        // Update data tentangKegiatan
+        tentangKegiatan.judulKegiatan = judulKegiatan;
+        tentangKegiatan.tanggal = tanggal;
+        tentangKegiatan.keterangan = keterangan;
 
-        await tentangKagiatan.save(); // Simpan perubahan ke database
+        await tentangKegiatan.save(); // Simpan perubahan ke database
 
-        res.status(200).json({ msg: "Data TentangKegiatan berhasil diperbarui" });
+        res.status(200).json({ msg: "Data Tentang Kegiatan berhasil diperbarui" });
     } catch (error) {
         console.error("Error in updateTentangKegiatan:", error);
         res.status(500).json({ msg: error.message });
     }
 };
-
 
 export const deleteTentangKegiatan = async (req, res) => {
     try {
