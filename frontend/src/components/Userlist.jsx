@@ -22,7 +22,7 @@ const Userlist = () => {
 
   return (
     <div>
-        <h1 style={{ marginTop: '10%', marginLeft: '1%', color: hslValue }} className='title'>Users</h1>
+        <h1 style={{ marginLeft: '1%', color: hslValue }} className='title'>Users</h1>
         <h2 style={{ marginLeft: '1%', color: hslValue }} className='subtitle'>Daftar Users</h2>
         <Link style={{ color: 'white' }} to="/users/add" className="button is-primary mb-2">
             Tambah Users

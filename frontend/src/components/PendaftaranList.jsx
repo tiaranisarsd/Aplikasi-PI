@@ -30,7 +30,7 @@ const PendaftaranList = () => {
 
     return (
         <div>
-            <h1 style={{ marginTop: '10%', marginLeft: '1%', color: hslValue }} className='title'>Pendaftaran</h1>
+            <h1 style={{ marginLeft: '1%', color: hslValue }} className='title'>Pendaftaran</h1>
             <h2 style={{ marginLeft: '1%', color: hslValue }} className='subtitle'>Daftar Pendaftaran</h2>
             <Link style={{ color: "white" }} to="/Pendaftaran/add" className="button is-primary mb-2">
                 Tambah Pendaftaran

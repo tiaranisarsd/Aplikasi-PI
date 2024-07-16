@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
+import ModalImage from "react-modal-image";
 import '../style.css';
 
 const DokumentasiList = () => {
@@ -21,16 +23,20 @@ const DokumentasiList = () => {
         }
     };
 
-
     return (
         <div>
-            <h1 style={{marginTop: '10%', marginLeft: '1%', color: hslValue }} className="title">Dokumentasi</h1>
+            <h1 style={{ marginLeft: '1%', color: hslValue }} className="title">Dokumentasi</h1>
 
-            <div id="content">
+            <div className="content-dokumentasi">
                 {dokumentasi.map((item, index) => (
-                    <article style={{maxWidth:'40%'}} key={index} className="card">
-                        <img src={`http://localhost:5000/uploads/dokumentasi/${item.imageKegiatan}`} alt={item.kegiatanName} className="featured-image" />
-                        <h1 style={{ color: hslValue }} className="title">{item.kegiatanName}</h1>
+                    <article key={index}>
+                        <ModalImage
+                            small={`http://localhost:5000/uploads/dokumentasi/${item.imageKegiatan}`}
+                            large={`http://localhost:5000/uploads/dokumentasi/${item.imageKegiatan}`}
+                            alt={item.kegiatanName}
+                            className="featured-image-modal"
+                        />
+                        <h1 style={{ color: hslValue }}>{item.kegiatanName}</h1>
                     </article>
                 ))}
             </div>

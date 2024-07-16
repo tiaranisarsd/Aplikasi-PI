@@ -85,7 +85,7 @@ const DashboardList = () => {
 
     return (
         <div>
-            <h1 style={{marginTop: '10%', marginLeft: '1%', color: hslValue }} className="title">Dashboard</h1>
+            <h1 style={{marginLeft: '1%', color: hslValue }} className="title">Dashboard</h1>
             <h2 style={{ marginLeft: '1%', color: hslValue }} className="subtitle">
             Selamat Datang kembali <strong style={{ color: hslValue }}>{user && user.name}</strong>
             </h2>

@@ -28,15 +28,15 @@ const TentangKegiatan = () => {
 
     return (
         <div>
-            <h1 style={{marginTop: '10%', marginLeft: '1%', color: hslValue }} className="title"> Tentang Kegiatan</h1>
+            <h1 style={{marginLeft: '1%', color: hslValue }} className="title"> Tentang Kegiatan</h1>
 
             <div id="content">
 
                 {TentangKegiatan.map((item, index) => (
-                    <article key={index} className="card">
+                    <article key={index} className="card-tentangKegiatan">
                         <h1 style={{ color: hslValue }} className="title">{item.judulKegiatan}</h1>
-                        <img src={`http://localhost:5000/uploads/tentangKegiatan/${item.image}`} alt={item.image} className="featured-image" />
-                        <h2>Tanggal: {formatTanggal(item.tanggal)}</h2>
+                        <img src={`http://localhost:5000/uploads/tentangKegiatan/${item.image}`} alt={item.image} className="image-tentangKegiatan" />
+                        <h2 style={{ textAlign: 'center', fontWeight: 'bold' }}>Tanggal: {formatTanggal(item.tanggal)}</h2>
                         <h2>Keterangan :</h2>
                         <nav className="keterangan">
                             <ol>

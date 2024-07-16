@@ -22,29 +22,169 @@ h2 {
 img {
     vertical-align: middle;
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin: 20px;
 }
 
-.NavbarKmic{
-    padding-left: 10px;
+/* Navbar Styles */
+.navbar {
+    height: 70px; /* Adjust the height as needed */
+    padding: 1rem;
+    background: hsl(200, 90%, 25%); /* Ensure the background color is consistent */
+  }
+  
+  .navbar .logo {
+    max-height: 40px; /* Adjust the logo size */
+    margin: 1rem;
+  }
+  
+  .navbar .navbar-burger {
+    margin-left: auto;
+  }
+  
+  .navbar {
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar-burger {
+    color: white;
+  }
+  
+  .logo {
+    margin-right: 1.5rem;
+  }
+  .navbar .buttons .button {
+    margin-top: 0;
+  }
+
+  .menu {
+    background-color: white;
+    padding: 1rem;
+  }
+  
+  .menu-label {
+    color: hsl(200, 90%, 25%);
+    margin-top: 4%;
+  }
+  
+  /* Styles for the header to be hidden and shown */
+  .menu.is-hidden {
+    display: none;
+  }
+  
+  .menu.is-visible {
+    display: block;
+  }
+  
+  /* Toggle button styles */
+  .menu-toggle {
+    display: none;
+    background: hsl(200, 90%, 25%);
+    color: white;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+
+  .title {
+    margin-top: 4%;
+  }
+
+  /* Documentasi List Styles */
+.content-dokumentasi {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+  gap: 35px;
 }
 
-.logo{
-    max-width: 100px;
-    max-height: 30%;
-    margin-top: 20px;
-    margin-left: 20px;
-    border-radius: 50%;
+.content-dokumentasi article {
+  width: 45%;
+  position: relative;
 }
 
-.navbar{
-    margin-bottom: 0%;
+.content-dokumentasi h1 {
+  position: absolute;
+  bottom: 20px;
+  left: 64%;
+  transform: translateX(-60%);
+  color: white;
+  font-weight: 800;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 5px 10px;
+  text-align: center;
+  width: 100%;
+  font-size: 24px; 
+  font-family: 'Montserrat',sans-serif;
 }
 
-.menu{
-    margin-top: 60%;
-    padding-left: 5%;
+.featured-image-modal{
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.image-tentangKegiatan {
+  width: 50%; 
+  max-height: 150px; 
+  object-fit: cover;
+  margin: 0 auto 10px; 
+  margin-bottom: 20px;
+  display: block; 
+}
+
+.card-tentangKegiatan {
+  margin: 10px auto 20px; 
+  padding: 50px; 
+  border-radius: 8px;
+  width: 80%; 
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.card-tentangKegiatan h1 {
+  margin-top: 10px; 
+  text-align: center;
+}
+
+.keterangan ol {
+  padding-left: 20px; /* Indentasi untuk daftar keterangan */
+}
+
+  
+  /* Ensure responsive behavior */
+  @media (max-width: 768px) {
+    .navbar .navbar-menu {
+      display: none;
+    }
+  
+    .navbar .navbar-burger {
+      display: contents;
+      color: white;
+    }
+  
+    .navbar.is-active .navbar-menu {
+      display: block; /* Show the menu when active */
+
+    }
+    .menu-toggle {
+        display: block;
+      }
+    
+      .menu {
+        display: none;
+      }
+    
+      .menu.is-active {
+        display: block;
+      }
+    }
+
+  
 
 /* Tambahkan CSS untuk slider */
 .mySlides {
@@ -116,7 +256,7 @@ nav a:hover {
 
 .featured-image {
     width: 100%;
-    max-height: 300px;
+    max-height: 250px;
     object-fit: cover;
     object-position: center;
     border-radius: 5px;

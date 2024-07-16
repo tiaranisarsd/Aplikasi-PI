@@ -30,7 +30,7 @@ const LombaList = () => {
 
     return (
         <div>
-            <h1 style={{ marginTop: '10%', marginLeft: '1%', color: hslValue }} className='title'>Lomba</h1>
+            <h1 style={{ marginLeft: '1%', color: hslValue }} className='title'>Lomba</h1>
             <h2 style={{ marginLeft: '1%', color: hslValue }} className='subtitle'>Daftar Lomba</h2>
             <Link style={{ color: "white" }} to="/Lomba/add" className="button is-primary mb-2">
                 Tambah Lomba
