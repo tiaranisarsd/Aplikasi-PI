@@ -15,6 +15,10 @@ const FormAddLomba = () => {
 
     const saveLomba = async (e) => {
         e.preventDefault();
+        if (!lombaName) {
+          setMsg("Nama Lomba harus diisi.");
+          return;
+      }
         try {
           await axios.post("http://localhost:5000/Lomba", {
             lombaName: lombaName,

@@ -8,7 +8,7 @@ const FormAddPendaftaran = () => {
     const [category, setCategory] = useState([]);
     const [name, setNamePemain] = useState("");
     const [lombaId, setLombaId] = useState("");
-    const [categoryId, setCategoryId] = useState([]);
+    const [categoryId, setCategoryId] = useState(null); // Change to single value
     const [msg, setMsg] = useState("");
     const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ const FormAddPendaftaran = () => {
             setMsg("Lomba harus dipilih.");
             return;
         }
-        if (categoryId.length === 0) {
+        if (categoryId === null) {
             setMsg("Category harus dipilih.");
             return;
         }
@@ -35,7 +35,7 @@ const FormAddPendaftaran = () => {
             await axios.post("http://localhost:5000/Pendaftaran", {
                 name: name,
                 lombaId: lombaId,
-                categoryId: categoryId
+                categoryId: categoryId // Send single categoryId
             });
             navigate("/Pendaftaran");
         } catch (error) {
@@ -70,14 +70,7 @@ const FormAddPendaftaran = () => {
     };
 
     const handleCategoryChange = (e) => {
-        const value = parseInt(e.target.value);
-        setCategoryId((prev) => {
-            if (prev.includes(value)) {
-                return prev.filter((id) => id !== value);
-            } else {
-                return [...prev, value];
-            }
-        });
+        setCategoryId(parseInt(e.target.value)); // Ensure only one category is selected
     };
 
     return (
@@ -123,25 +116,25 @@ const FormAddPendaftaran = () => {
                             </div>
 
                             <div className="field">
-                  <div className="control">
-                    <label style={{ color: hslValue }} className="label">Kategori</label>
-                    <div className="radio-group">
-                      {category.map((cat) => (
-                        <label key={cat.id} className="radio-item" style={{ marginRight: '10px', display: 'inline-block' }}>
-                          <input
-                            type="radio"
-                            name="category"
-                            value={cat.id}
-                            style={{margin: '10px'}}
-                            checked={parseInt(categoryId) === cat.id}
-                            onChange={handleCategoryChange}
-                          />
-                          {cat.categoryName}
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+                                <div className="control">
+                                    <label style={{ color: hslValue }} className="label">Category</label>
+                                    <div className="radio-group">
+                                        {category.map((cat) => (
+                                            <label key={cat.id} className="radio-item" style={{ marginRight: '10px', display: 'inline-block' }}>
+                                                <input
+                                                    type="radio"
+                                                    name="category"
+                                                    value={cat.id}
+                                                    style={{margin: '10px'}}
+                                                    checked={categoryId === cat.id}
+                                                    onChange={handleCategoryChange}
+                                                />
+                                                {cat.categoryName}
+                                            </label>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
 
                             <div className="field">
                                 <div className="control">

@@ -34,7 +34,7 @@ const LoginKMIC = () => {
       <div className="hero-body">
         <div className="container">
           <div className="columns is-centered ">
-            <div className="column is-5">
+            <div>
                 <form onSubmit={Auth} className='box has-shadow border justify-content-center'>
                 <img 
               src={logo}

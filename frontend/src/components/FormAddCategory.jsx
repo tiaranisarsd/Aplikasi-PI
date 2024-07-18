@@ -16,6 +16,10 @@ const FormAddCategory = () => {
 
     const saveCategory = async (e) => {
         e.preventDefault();
+        if (!categoryName) {
+            setMsg("Nama Kategori harus diisi.");
+            return;
+        }
         try {
           await axios.post("http://localhost:5000/Category", {
             categoryName: categoryName,

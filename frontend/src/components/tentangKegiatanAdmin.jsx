@@ -43,7 +43,7 @@ const TentangKegiatanAdmin = () => {
             <h2 style={{ marginLeft: '1%', color: hslValue }} className="subtitle">
                 Daftar Tentang Kegiatan
             </h2>
-            <Link to="/tentangKegiatan/add" className="button is-primary mb-2">
+            <Link style={{ color: "white" }} to="/tentangKegiatan/add" className="button is-primary mb-2">
                 Tambah Informasi Kegiatan
             </Link>
             <table className="table is-striped is-fullwidth">
@@ -69,12 +69,14 @@ const TentangKegiatanAdmin = () => {
                             <td>{formatTanggal(tentangKegiatan.tanggal)}</td>
                             <td>
                                 <Link
+                                    style={{ color: "white", marginRight: "3%" }}
                                     to={`/tentangKegiatan/edit/${tentangKegiatan.uuid}`}
                                     className="button is-small is-info mr-2"
                                 >
                                     Edit
                                 </Link>
                                 <button
+                                    style={{ color: "white", marginRight: "3%" }}
                                     onClick={() => deleteTentangKegiatan(tentangKegiatan.uuid)}
                                     className="button is-small is-danger"
                                 >

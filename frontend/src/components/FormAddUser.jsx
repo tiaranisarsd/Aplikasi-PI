@@ -14,6 +14,10 @@ const FormAddUser = () => {
 
   const saveUser = async (e) => {
     e.preventDefault();
+    if (!name || !email ||!password ||!confPassword ||!role) {
+        setMsg("Semua bidang harus diisi.");
+        return;
+    }
     try {
       await axios.post("http://localhost:5000/users", {
         name: name,

@@ -94,7 +94,7 @@ const DashboardList = () => {
             <div className="slideshow-container">
                     {banner.map((banner, index) => (
                         <div key={index} className="mySlides fade">
-                            <img src={`http://localhost:5000/uploads/banner/${banner.imageBanner}`} alt={banner.bannerName} />
+                            <img style={{borderRadius: '12px'}} src={`http://localhost:5000/uploads/banner/${banner.imageBanner}`} alt={banner.bannerName} />
                         </div>
                     ))}
 
@@ -119,11 +119,8 @@ const DashboardList = () => {
                             </ul>
                         </nav>
                         <h2>Aturan :</h2>
-                        <nav className="list-aturan">
-                            <ol>
-                                <li dangerouslySetInnerHTML={{ __html: item.aturanLomba }} />
-                            </ol>
-                        </nav>
+                        <div className="list-aturan" dangerouslySetInnerHTML={{ __html: item.aturanLomba }} />
+
                     </article>
                 ))}
             </div>

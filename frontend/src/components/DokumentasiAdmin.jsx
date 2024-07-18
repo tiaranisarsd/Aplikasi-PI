@@ -36,7 +36,7 @@ const DokumentasiAdmin = () => {
             <h2 style={{ marginLeft: '1%', color: hslValue }} className="subtitle">
                 Daftar Dokumentasi
             </h2>
-            <Link to="/dokumentasi/add" className="button is-primary mb-2">
+            <Link style={{ color: "white" }} to="/dokumentasi/add" className="button is-primary mb-2">
                 Tambah Dokumentasi
             </Link>
             <table className="table is-striped is-fullwidth">
@@ -60,12 +60,14 @@ const DokumentasiAdmin = () => {
                             </td>
                             <td>
                                 <Link
+                                    style={{ color: "white", marginRight: "3%" }}
                                     to={`/dokumentasi/edit/${dokumentasi.uuid}`}
                                     className="button is-small is-info mr-2"
                                 >
                                     Edit
                                 </Link>
                                 <button
+                                    style={{ color: "white", marginRight: "3%" }}
                                     onClick={() => deleteDokumentasi(dokumentasi.uuid)}
                                     className="button is-small is-danger"
                                 >

@@ -31,6 +31,10 @@ const FormEditUser = () => {
   
     const updateUser = async (e) => {
       e.preventDefault();
+      if (!name || !email ||!password ||!confPassword ||!role) {
+        setMsg("Semua bidang harus diisi.");
+        return;
+    }
       try {
         await axios.patch(`http://localhost:5000/users/${id}`, {
           name: name,

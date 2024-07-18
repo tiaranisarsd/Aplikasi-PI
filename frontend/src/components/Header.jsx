@@ -19,7 +19,7 @@ export const Header = ({ isMenuActive }) => {
 
   return (
     <div>
-      <aside className={`menu pl-2 has-shadow ${isMenuActive ? 'is-active' : ''}`}>
+      <aside style={{height: '100%'}}className={`menu pl-2 has-shadow ${isMenuActive ? 'is-active' : ''}`}>
         <p className="menu-label">General</p>
         <ul className="menu-list">
           <li>

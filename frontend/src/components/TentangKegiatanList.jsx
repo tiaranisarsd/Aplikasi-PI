@@ -38,11 +38,7 @@ const TentangKegiatan = () => {
                         <img src={`http://localhost:5000/uploads/tentangKegiatan/${item.image}`} alt={item.image} className="image-tentangKegiatan" />
                         <h2 style={{ textAlign: 'center', fontWeight: 'bold' }}>Tanggal: {formatTanggal(item.tanggal)}</h2>
                         <h2>Keterangan :</h2>
-                        <nav className="keterangan">
-                            <ol>
-                                <li dangerouslySetInnerHTML={{ __html: item.keterangan }} />
-                            </ol>
-                        </nav>
+                        <div className="keterangan" dangerouslySetInnerHTML={{ __html: item.keterangan }} />
                     </article>
                 ))}
             </div>

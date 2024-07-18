@@ -14,10 +14,10 @@ const Dashboard = db.define('Dashboard', {
         }
     },
     lombaId: {
-        type: DataTypes.INTEGER,  // Pastikan tipe data sesuai
+        type: DataTypes.INTEGER,  
         allowNull: false,
         references: {
-            model: Lomba,  // Menggunakan model Lomba sebagai referensi
+            model: Lomba,  
             key: 'id'
         },
         validate: {

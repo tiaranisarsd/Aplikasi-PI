@@ -31,6 +31,10 @@ const FormEditCategory = () => {
   
     const updateCategory = async (e) => {
       e.preventDefault();
+      if (!categoryName) {
+        setMsg("Nama Kategori harus diisi.");
+        return;
+    }
       try {
         await axios.patch(`http://localhost:5000/Category/${id}`, {
           categoryName: categoryName,

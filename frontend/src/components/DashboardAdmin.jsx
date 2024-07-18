@@ -36,7 +36,7 @@ const DashboardList = () => {
             <h2 style={{ marginLeft: '1%', color: hslValue }} className="subtitle">
                 Daftar Dashboard
             </h2>
-            <Link to="/dashboard/add" className="button is-primary mb-2">
+            <Link style={{ color: "white" }} to="/dashboard/add" className="button is-primary mb-2">
                 Tambah Dashboard
             </Link>
             <table className="table is-striped is-fullwidth">
@@ -60,12 +60,14 @@ const DashboardList = () => {
                             </td>
                             <td>
                                 <Link
+                                    style={{ color: "white", marginRight: "3%" }}
                                     to={`/dashboard/edit/${dashboard.uuid}`}
                                     className="button is-small is-info mr-2"
                                 >
                                     Edit
                                 </Link>
                                 <button
+                                    style={{ color: "white", marginRight: "3%" }}
                                     onClick={() => deleteDashboard(dashboard.uuid)}
                                     className="button is-small is-danger"
                                 >

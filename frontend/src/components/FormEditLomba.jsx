@@ -31,6 +31,10 @@ const FormEditLomba = () => {
   
     const updateLomba = async (e) => {
       e.preventDefault();
+      if (!lombaName) {
+        setMsg("Nama lomba harus diisi.");
+        return;
+    }
       try {
         await axios.patch(`http://localhost:5000/Lomba/${id}`, {
           lombaName: lombaName,
