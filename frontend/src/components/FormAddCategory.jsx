@@ -21,7 +21,7 @@ const FormAddCategory = () => {
             return;
         }
         try {
-          await axios.post("http://localhost:5000/Category", {
+          await axios.post("https://app-katar.vercel.app/Category", {
             categoryName: categoryName,
             lombaId
           });
@@ -35,7 +35,7 @@ const FormAddCategory = () => {
 
       const getLomba = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/Lomba");
+            const response = await axios.get("https://app-katar.vercel.app/Lomba");
             setLomba(response.data);
         } catch (error) {
             console.error("Error fetching lomba:", error);

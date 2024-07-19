@@ -12,7 +12,7 @@ const BannerList = () => {
 
     const getBanner = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/Banner");
+            const response = await axios.get("https://app-katar.vercel.app/Banner");
             setBanner(response.data);
         } catch (error) {
             console.error("Error fetching Banner:", error);
@@ -21,7 +21,7 @@ const BannerList = () => {
 
     const deleteBanner = async (BannerId) => {
         try {
-            await axios.delete(`http://localhost:5000/Banner/${BannerId}`);
+            await axios.delete(`https://app-katar.vercel.app/Banner/${BannerId}`);
             getBanner();
         } catch (error) {
             console.error("Error deleting Banner:",error.response ? error.response.data.msg : error.message);
@@ -50,7 +50,7 @@ const BannerList = () => {
                             <td>{index + 1}</td>
                             <td>{banner.bannerName}</td>
                             <td>
-                            <a href={`http://localhost:5000/uploads/banner/${banner.imageBanner}`} target="_blank" rel="noopener noreferrer">
+                            <a href={`https://app-katar.vercel.app/uploads/banner/${banner.imageBanner}`} target="_blank" rel="noopener noreferrer">
                                 {banner.imageBanner}
                                 </a>
                             </td>

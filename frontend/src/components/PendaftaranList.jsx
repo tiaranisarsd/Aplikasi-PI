@@ -12,7 +12,7 @@ const PendaftaranList = () => {
 
     const getPendaftaran = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/Pendaftaran");
+            const response = await axios.get("https://app-katar.vercel.app/Pendaftaran");
             setPendaftaran(response.data);
         } catch (error) {
             console.error("Error fetching Pendaftaran:", error);
@@ -21,7 +21,7 @@ const PendaftaranList = () => {
 
     const deletePendaftaran = async (PendaftaranId) => {
         try {
-            await axios.delete(`http://localhost:5000/Pendaftaran/${PendaftaranId}`);
+            await axios.delete(`https://app-katar.vercel.app/Pendaftaran/${PendaftaranId}`);
             getPendaftaran();
         } catch (error) {
             console.error("Error deleting Pendaftaran:", error);

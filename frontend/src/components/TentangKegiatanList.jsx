@@ -13,7 +13,7 @@ const TentangKegiatan = () => {
 
     const getTentangKegiatan = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/tentangKegiatan");
+            const response = await axios.get("https://app-katar.vercel.app/tentangKegiatan");
             setTentangKegiatan(response.data);
         } catch (error) {
             console.error("Error fetching tentangKegiatan:", error);
@@ -35,7 +35,7 @@ const TentangKegiatan = () => {
                 {TentangKegiatan.map((item, index) => (
                     <article key={index} className="card-tentangKegiatan">
                         <h1 style={{ color: hslValue }} className="title">{item.judulKegiatan}</h1>
-                        <img src={`http://localhost:5000/uploads/tentangKegiatan/${item.image}`} alt={item.image} className="image-tentangKegiatan" />
+                        <img src={`https://app-katar.vercel.app/uploads/tentangKegiatan/${item.image}`} alt={item.image} className="image-tentangKegiatan" />
                         <h2 style={{ textAlign: 'center', fontWeight: 'bold' }}>Tanggal: {formatTanggal(item.tanggal)}</h2>
                         <h2>Keterangan :</h2>
                         <div className="keterangan" dangerouslySetInnerHTML={{ __html: item.keterangan }} />

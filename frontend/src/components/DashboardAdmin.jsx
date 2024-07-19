@@ -12,7 +12,7 @@ const DashboardList = () => {
 
     const getDashboard = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/dashboard');
+            const response = await axios.get('https://app-katar.vercel.app/dashboard');
             setDashboard(response.data);
         } catch (error) {
             console.error('Error fetching dashboard:', error);
@@ -21,7 +21,7 @@ const DashboardList = () => {
 
     const deleteDashboard = async (dashboardId) => {
         try {
-            await axios.delete(`http://localhost:5000/dashboard/${dashboardId}`);
+            await axios.delete(`https://app-katar.vercel.app/dashboard/${dashboardId}`);
             getDashboard();
         } catch (error) {
             console.error('Error deleting dashboard:', error);
@@ -54,7 +54,7 @@ const DashboardList = () => {
                             <td>{index + 1}</td>
                             <td>{dashboard.lomba.lombaName}</td>
                             <td>
-                            <a href={`http://localhost:5000/uploads/${dashboard.imageUrl}`} target="_blank" rel="noopener noreferrer">
+                            <a href={`https://app-katar.vercel.app/uploads/${dashboard.imageUrl}`} target="_blank" rel="noopener noreferrer">
                                 {dashboard.imageUrl}
                             </a>
                             </td>

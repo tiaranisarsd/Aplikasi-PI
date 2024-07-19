@@ -15,7 +15,7 @@ const FormEditLomba = () => {
     const getLombaById = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/lomba/${id}`
+          `https://app-katar.vercel.app/lomba/${id}`
         );
         setName(response.data.lombaName);
         setLombaId(response.data.lombaId);
@@ -36,7 +36,7 @@ const FormEditLomba = () => {
         return;
     }
       try {
-        await axios.patch(`http://localhost:5000/Lomba/${id}`, {
+        await axios.patch(`https://app-katar.vercel.app/Lomba/${id}`, {
           lombaName: lombaName,
           lombaId: lomba.id,
         });
@@ -50,7 +50,7 @@ const FormEditLomba = () => {
 
     const getLomba = async () => {
       try {
-          const response = await axios.get("http://localhost:5000/Lomba");
+          const response = await axios.get("https://app-katar.vercel.app/Lomba");
           setLomba(response.data);
       } catch (error) {
           console.error("Error fetching Lomba:", error);

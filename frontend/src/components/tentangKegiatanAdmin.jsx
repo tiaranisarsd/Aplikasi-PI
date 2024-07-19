@@ -12,7 +12,7 @@ const TentangKegiatanAdmin = () => {
 
     const getTentangKegiatan = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/tentangKegiatan');
+            const response = await axios.get('https://app-katar.vercel.app/tentangKegiatan');
             setTentangKegiatan(response.data);
         } catch (error) {
             console.error('Error fetching tentangKegiatan:', error);
@@ -21,7 +21,7 @@ const TentangKegiatanAdmin = () => {
 
     const deleteTentangKegiatan = async (tentangKegiatanId) => {
         try {
-            await axios.delete(`http://localhost:5000/tentangKegiatan/${tentangKegiatanId}`);
+            await axios.delete(`https://app-katar.vercel.app/tentangKegiatan/${tentangKegiatanId}`);
             getTentangKegiatan();
         } catch (error) {
             console.error('Error deleting tentangKegiatan:', error);
@@ -62,7 +62,7 @@ const TentangKegiatanAdmin = () => {
                             <td>{index + 1}</td>
                             <td>{tentangKegiatan.judulKegiatan}</td>
                             <td>
-                            <a href={`http://localhost:5000/uploads/tentangKegiatan/${tentangKegiatan.image}`} target="_blank" rel="noopener noreferrer">
+                            <a href={`https://app-katar.vercel.app/uploads/tentangKegiatan/${tentangKegiatan.image}`} target="_blank" rel="noopener noreferrer">
                                 {tentangKegiatan.image}
                             </a>
                             </td>

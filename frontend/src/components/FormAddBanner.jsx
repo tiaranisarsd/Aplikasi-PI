@@ -16,7 +16,7 @@ const FormAddBanner = () => {
             formData.append("bannerName", bannerName);
             formData.append("imageBanner", imageBanner); // Memasukkan file gambar ke FormData
 
-            await axios.post("http://localhost:5000/Banner", formData, {
+            await axios.post("https://app-katar.vercel.app/Banner", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data", // Header penting untuk FormData
                 },

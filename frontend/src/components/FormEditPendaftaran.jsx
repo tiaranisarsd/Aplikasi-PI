@@ -17,14 +17,14 @@ const FormEditPendaftaran = () => {
       const getPendaftaranById = async () => {
         try {
           const response = await axios.get(
-            `http://localhost:5000/pendaftaran/${id}`
+            `https://app-katar.vercel.app/pendaftaran/${id}`
           );
           setName(response.data.name);
           setLombaId(response.data.lomba.id);
           setCategoryId(response.data.category.id ? parseInt(response.data.category.id) : null);
           
           if (response.data.lomba.id) {
-            const categoryResponse = await axios.get(`http://localhost:5000/category/lomba/${response.data.lomba.id}`);
+            const categoryResponse = await axios.get(`https://app-katar.vercel.app/category/lomba/${response.data.lomba.id}`);
             setCategory(categoryResponse.data);
           }
         } catch (error) {
@@ -36,7 +36,7 @@ const FormEditPendaftaran = () => {
 
       const getLomba = async () => {
         try {
-          const response = await axios.get("http://localhost:5000/Lomba");
+          const response = await axios.get("https://app-katar.vercel.app/Lomba");
           setLomba(response.data);
         } catch (error) {
           console.error("Error fetching lomba:", error);
@@ -55,7 +55,7 @@ const FormEditPendaftaran = () => {
 
     const getCategoryByLomba = async (lombaId) => {
       try {
-          const response = await axios.get(`http://localhost:5000/category/lomba/${lombaId}`);
+          const response = await axios.get(`https://app-katar.vercel.app/category/lomba/${lombaId}`);
           setCategory(response.data);
       } catch (error) {
           console.error("Error fetching categories:", error);
@@ -73,7 +73,7 @@ const FormEditPendaftaran = () => {
         return;
       }
       try {
-        await axios.patch(`http://localhost:5000/pendaftaran/${id}`, {
+        await axios.patch(`https://app-katar.vercel.app/pendaftaran/${id}`, {
           name: name,
           lombaId: lombaId,
           categoryId: categoryId.toString() 

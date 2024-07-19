@@ -16,7 +16,7 @@ const FormEditUser = () => {
     useEffect(() => {
       const getUserById = async () => {
         try {
-          const response = await axios.get(`http://localhost:5000/users/${id}`);
+          const response = await axios.get(`https://app-katar.vercel.app/users/${id}`);
           setName(response.data.name);
           setEmail(response.data.email);
           setRole(response.data.role);
@@ -36,7 +36,7 @@ const FormEditUser = () => {
         return;
     }
       try {
-        await axios.patch(`http://localhost:5000/users/${id}`, {
+        await axios.patch(`https://app-katar.vercel.app/users/${id}`, {
           name: name,
           email: email,
           password: password,
