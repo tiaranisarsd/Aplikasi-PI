@@ -7,12 +7,12 @@ import '../style.css';
 
 const DokumentasiList = () => {
     const [dokumentasi, setDokumentasi] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
     const hslValue = 'hsl(200, 90%, 25%)';
 
     useEffect(() => {
         getDokumentasi();
     }, []);
-
 
     const getDokumentasi = async () => {
         try {
@@ -23,22 +23,46 @@ const DokumentasiList = () => {
         }
     };
 
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value); 
+    };
+
+    const filteredDokumentasi = dokumentasi.filter((item) =>
+        item.kegiatanName.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <div>
             <h1 style={{ marginLeft: '1%', color: hslValue }} className="title">Dokumentasi</h1>
+            
+            <div className="field" style={{ marginLeft: '2%', marginBottom: '1%', width: '30%' }}>
+                <div className="control">
+                    <input
+                        type="text"
+                        className="input"
+                        placeholder="Cari berdasarkan nama kegiatan"
+                        value={searchTerm}
+                        onChange={handleSearchChange}
+                    />
+                </div>
+            </div>
 
             <div className="content-dokumentasi">
-                {dokumentasi.map((item, index) => (
-                    <article key={index}>
-                        <ModalImage
-                            small={`http://localhost:5000/uploads/dokumentasi/${item.imageKegiatan}`}
-                            large={`http://localhost:5000/uploads/dokumentasi/${item.imageKegiatan}`}
-                            alt={item.kegiatanName}
-                            className="featured-image-modal"
-                        />
-                        <h1 style={{ color: hslValue }}>{item.kegiatanName}</h1>
-                    </article>
-                ))}
+                {filteredDokumentasi.length > 0 ? (
+                    filteredDokumentasi.map((item, index) => (
+                        <article key={index}>
+                            <ModalImage
+                                small={`http://localhost:5000/uploads/dokumentasi/${item.imageKegiatan}`}
+                                large={`http://localhost:5000/uploads/dokumentasi/${item.imageKegiatan}`}
+                                alt={item.kegiatanName}
+                                className="featured-image-modal"
+                            />
+                            <h1 style={{ color: hslValue }}>{item.kegiatanName}</h1>
+                        </article>
+                    ))
+                ) : (
+                    <p style={{ color: hslValue, marginLeft: '1%' }}>Kegiatan tidak ditemukan</p>
+                )}
             </div>
         </div>
     );

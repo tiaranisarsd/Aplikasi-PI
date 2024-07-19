@@ -35,7 +35,7 @@ const FormAddPendaftaran = () => {
             await axios.post("http://localhost:5000/Pendaftaran", {
                 name: name,
                 lombaId: lombaId,
-                categoryId: categoryId // Send single categoryId
+                categoryId: categoryId 
             });
             navigate("/Pendaftaran");
         } catch (error) {
@@ -70,7 +70,7 @@ const FormAddPendaftaran = () => {
     };
 
     const handleCategoryChange = (e) => {
-        setCategoryId(parseInt(e.target.value)); // Ensure only one category is selected
+        setCategoryId(parseInt(e.target.value));
     };
 
     return (

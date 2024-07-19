@@ -8,7 +8,7 @@ const FormEditPendaftaran = () => {
     const [lomba, setLomba] = useState([]);
     const [lombaId, setLombaId] = useState("");
     const [category, setCategory] = useState([]);
-    const [categoryId, setCategoryId] = useState(null); // Change to a single value
+    const [categoryId, setCategoryId] = useState(null);
     const [msg, setMsg] = useState("");
     const navigate = useNavigate();
     const { id } = useParams();
@@ -21,10 +21,10 @@ const FormEditPendaftaran = () => {
           );
           setName(response.data.name);
           setLombaId(response.data.lomba.id);
-          setCategoryId(response.data.category.id ? parseInt(response.data.categoryId) : null); // Change to parseInt
+          setCategoryId(response.data.category.id ? parseInt(response.data.category.id) : null);
           
-          if (response.data.lombaId) {
-            const categoryResponse = await axios.get(`http://localhost:5000/category/lomba/${response.data.lombaId}`);
+          if (response.data.lomba.id) {
+            const categoryResponse = await axios.get(`http://localhost:5000/category/lomba/${response.data.lomba.id}`);
             setCategory(categoryResponse.data);
           }
         } catch (error) {
@@ -68,7 +68,7 @@ const FormEditPendaftaran = () => {
         setMsg("Lomba belum dipilih.");
         return;
       }
-      if (categoryId === null) {
+      if (!categoryId) {
         setMsg("Category belum dipilih.");
         return;
       }
@@ -76,7 +76,7 @@ const FormEditPendaftaran = () => {
         await axios.patch(`http://localhost:5000/pendaftaran/${id}`, {
           name: name,
           lombaId: lombaId,
-          categoryId: categoryId.toString() // Convert to string
+          categoryId: categoryId.toString() 
         });
         navigate("/pendaftaran");
       } catch (error) {
