@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.185dc3fe.css",
+    "main.js": "/static/js/main.c644afbd.js",
+    "static/media/logo_katar.png": "/static/media/logo_katar.af7ed72701d9e4b3c24d.png",
+    "index.html": "/index.html",
+    "main.185dc3fe.css.map": "/static/css/main.185dc3fe.css.map",
+    "main.c644afbd.js.map": "/static/js/main.c644afbd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.185dc3fe.css",
+    "static/js/main.c644afbd.js"
+  ]
+}
