@@ -12,7 +12,7 @@ const LombaList = () => {
 
     const getLomba = async () => {
         try {
-            const response = await axios.get("https://app-katar.vercel.app/Lomba");
+            const response = await axios.get("http://localhost:5000/Lomba");
             setLomba(response.data);
         } catch (error) {
             console.error("Error fetching Lomba:", error);
@@ -21,7 +21,7 @@ const LombaList = () => {
 
     const deleteLomba = async (LombaId) => {
         try {
-            await axios.delete(`https://app-katar.vercel.app/Lomba/${LombaId}`);
+            await axios.delete(`http://localhost:5000/Lomba/${LombaId}`);
             getLomba();
         } catch (error) {
             console.error("Error deleting Lomba:",error.response ? error.response.data.msg : error.message);

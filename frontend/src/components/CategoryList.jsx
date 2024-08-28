@@ -22,7 +22,7 @@ const CategoryList = () => {
 
     const getLomba = async () => {
         try {
-            const response = await axios.get("https://app-katar.vercel.app/Lomba");
+            const response = await axios.get("http://localhost:5000/Lomba");
             setLomba(response.data);
         } catch (error) {
             console.error("Error fetching lomba:", error);
@@ -31,7 +31,7 @@ const CategoryList = () => {
 
     const getCategory = async () => {
         try {
-            const response = await axios.get("https://app-katar.vercel.app/Category");
+            const response = await axios.get("http://localhost:5000/Category");
             setCategories(response.data);
         } catch (error) {
             console.error("Error fetching Category:", error);
@@ -40,7 +40,7 @@ const CategoryList = () => {
 
     const getCategoriesByLomba = async (lombaId) => {
         try {
-            const response = await axios.get(`https://app-katar.vercel.app/category/lomba/${lombaId}`);
+            const response = await axios.get(`http://localhost:5000/category/lomba/${lombaId}`);
             setCategories(response.data);
         } catch (error) {
             console.error("Error fetching categories by lomba:", error);
@@ -49,7 +49,7 @@ const CategoryList = () => {
 
     const deleteCategory = async (categoryId) => {
         try {
-            await axios.delete(`https://app-katar.vercel.app/Category/${categoryId}`);
+            await axios.delete(`http://localhost:5000/Category/${categoryId}`);
             getCategoriesByLomba(lombaId);
         } catch (error) {
             console.error("Error deleting Category:", error.response ? error.response.data.msg : error.message);
@@ -58,10 +58,10 @@ const CategoryList = () => {
 
     return (
         <div>
-            <h1 style={{ marginLeft: '1%', color: hslValue }} className='title'>Category</h1>
-            <h2 style={{marginLeft: '1%', color: hslValue }} className='subtitle'>Daftar Category</h2>
+            <h1 style={{ marginLeft: '1%', color: hslValue }} className='title'>Kategori</h1>
+            <h2 style={{marginLeft: '1%', color: hslValue }} className='subtitle'>Daftar Kategori</h2>
             <Link style={{ color: "white" }} to="/Category/add" className="button is-primary mb-2">
-                Tambah Category
+                Tambah Kategori
             </Link>
 
             <div className="field">

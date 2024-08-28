@@ -16,7 +16,7 @@ const DokumentasiList = () => {
 
     const getDokumentasi = async () => {
         try {
-            const response = await axios.get("https://app-katar.vercel.app/dokumentasi");
+            const response = await axios.get("http://localhost:5000/dokumentasi");
             setDokumentasi(response.data);
         } catch (error) {
             console.error("Error fetching dokumentasi:", error);
@@ -52,8 +52,8 @@ const DokumentasiList = () => {
                     filteredDokumentasi.map((item, index) => (
                         <article key={index}>
                             <ModalImage
-                                small={`https://app-katar.vercel.app/uploads/dokumentasi/${item.imageKegiatan}`}
-                                large={`https://app-katar.vercel.app/uploads/dokumentasi/${item.imageKegiatan}`}
+                                small={`http://localhost:5000/uploads/dokumentasi/${item.imageKegiatan}`}
+                                large={`http://localhost:5000/uploads/dokumentasi/${item.imageKegiatan}`}
                                 alt={item.kegiatanName}
                                 className="featured-image-modal"
                             />

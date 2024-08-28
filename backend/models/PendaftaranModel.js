@@ -23,6 +23,14 @@ const Pendaftaran = db.define('Pendaftaran', {
             len: [3, 100]
         }
     },
+
+    rw: {
+        type: DataTypes.INTEGER,  
+        allowNull: true,
+        validate: {
+            notEmpty: true
+        }
+    },
     lombaId: {
         type: DataTypes.INTEGER,  // Pastikan tipe data sesuai
         allowNull: true,

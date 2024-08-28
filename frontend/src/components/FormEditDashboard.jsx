@@ -19,7 +19,7 @@ const FormEditDashboard = () => {
     useEffect(() => {
         const getDashboardById = async () => {
             try {
-                const response = await axios.get(`https://app-katar.vercel.app/dashboard/${id}`);
+                const response = await axios.get(`http://localhost:5000/dashboard/${id}`);
                 console.log("Dashboard Response:", response.data);
                 if (response.data) {
                     setLombaId(response.data.lomba.id);
@@ -28,7 +28,7 @@ const FormEditDashboard = () => {
                     setSelectedCategories(response.data.categoryId || []);
 
                     if (response.data.lomba.id) {
-                        const categoryResponse = await axios.get(`https://app-katar.vercel.app/category/lomba/${response.data.lomba.id}`);
+                        const categoryResponse = await axios.get(`http://localhost:5000/category/lomba/${response.data.lomba.id}`);
                         console.log("Category Response:", categoryResponse.data);
                         setCategory(categoryResponse.data);
                     }
@@ -47,7 +47,7 @@ const FormEditDashboard = () => {
 
         const getLomba = async () => {
             try {
-                const response = await axios.get("https://app-katar.vercel.app/lomba");
+                const response = await axios.get("http://localhost:5000/lomba");
                 console.log("Lomba Response:", response.data);
                 setLomba(response.data);
             } catch (error) {
@@ -69,7 +69,7 @@ const FormEditDashboard = () => {
 
     const getCategory = async () => {
         try {
-            const response = await axios.get("https://app-katar.vercel.app/category");
+            const response = await axios.get("http://localhost:5000/category");
             console.log("Category Response:", response.data);
             setCategory(response.data);
         } catch (error) {
@@ -79,7 +79,7 @@ const FormEditDashboard = () => {
 
     const getCategoryByLomba = async (lombaId) => {
         try {
-            const response = await axios.get(`https://app-katar.vercel.app/category/lomba/${lombaId}`);
+            const response = await axios.get(`http://localhost:5000/category/lomba/${lombaId}`);
             console.log("Category by Lomba Response:", response.data);
             setCategory(response.data);
         } catch (error) {
@@ -105,7 +105,7 @@ const FormEditDashboard = () => {
             formData.append("categoryId", JSON.stringify(selectedCategories));
             formData.append("aturanLomba", aturanLomba);
 
-            const response = await axios.patch(`https://app-katar.vercel.app/dashboard/${id}`, formData, {
+            const response = await axios.patch(`http://localhost:5000/dashboard/${id}`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
@@ -200,7 +200,7 @@ const FormEditDashboard = () => {
                                     )}
                                     {imageUrl && typeof imageUrl === 'string' && (
                                         <div style={{ marginBottom: '10px', marginTop: '10px' }}>
-                                            <img src={`https://app-katar.vercel.app/uploads/${imageUrl}`} alt={imageUrl} style={{ maxWidth: '200px' }} />
+                                            <img src={`http://localhost:5000/uploads/${imageUrl}`} alt={imageUrl} style={{ maxWidth: '200px' }} />
                                             <p>{imageUrl}</p>
                                         </div>
                                     )}

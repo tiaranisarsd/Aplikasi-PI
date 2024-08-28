@@ -37,7 +37,7 @@ const FormAddDashboard = () => {
             formData.append("categoryId", JSON.stringify(categoryId));
             formData.append("aturanLomba", aturanLomba);
 
-            await axios.post("https://app-katar.vercel.app/dashboard", formData, {
+            await axios.post("http://localhost:5000/dashboard", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -52,7 +52,7 @@ const FormAddDashboard = () => {
 
     const getLomba = async () => {
         try {
-            const response = await axios.get("https://app-katar.vercel.app/Lomba");
+            const response = await axios.get("http://localhost:5000/Lomba");
             setLomba(response.data);
         } catch (error) {
             console.error("Error fetching lomba:", error);
@@ -61,7 +61,7 @@ const FormAddDashboard = () => {
 
     const getCategoriesByLomba = async (lombaId) => {
         try {
-            const url = lombaId ? `https://app-katar.vercel.app/category/lomba/${lombaId}` : "https://app-katar.vercel.app/Category";
+            const url = lombaId ? `http://localhost:5000/category/lomba/${lombaId}` : "http://localhost:5000/Category";
             const response = await axios.get(url);
             setCategory(response.data);
         } catch (error) {

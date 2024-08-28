@@ -1,7 +1,7 @@
 import {Sequelize} from "sequelize";
 
-const db = new Sequelize('freedb_kmic_db', 'freedb_kmic-user', '5MNsMBj!#EK8tQW', {
-    host: "sql.freedb.tech",
+const db = new Sequelize('kmic_db', 'root', '', {
+    host: "localhost",
     dialect: "mysql"
 });
 

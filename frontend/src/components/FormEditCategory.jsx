@@ -15,7 +15,7 @@ const FormEditCategory = () => {
     const getCategoryById = async () => {
       try {
         const response = await axios.get(
-          `https://app-katar.vercel.app/Category/${id}`
+          `http://localhost:5000/Category/${id}`
         );
         setName(response.data.categoryName);
         setCategoryId(response.data.categoryId);
@@ -36,7 +36,7 @@ const FormEditCategory = () => {
         return;
     }
       try {
-        await axios.patch(`https://app-katar.vercel.app/Category/${id}`, {
+        await axios.patch(`http://localhost:5000/Category/${id}`, {
           categoryName: categoryName,
           categoryId: category.id,
         });
@@ -50,7 +50,7 @@ const FormEditCategory = () => {
 
     const getCategory = async () => {
       try {
-          const response = await axios.get("https://app-katar.vercel.app/Category");
+          const response = await axios.get("http://localhost:5000/Category");
           setCategory(response.data);
       } catch (error) {
           console.error("Error fetching Category:", error);

@@ -18,7 +18,7 @@ const FormEditTentangKegiatan = () => {
     useEffect(() => {
         const getTentangKegiatanById = async () => {
             try {
-                const response = await axios.get(`https://app-katar.vercel.app/tentangKegiatan/${id}`);
+                const response = await axios.get(`http://localhost:5000/tentangKegiatan/${id}`);
                 setJudulKegiatan(response.data.judulKegiatan);
                 setImage(response.data.image);
                 setTanggal(response.data.tanggal.split("T")[0]); // Mengambil hanya bagian tanggal
@@ -43,7 +43,7 @@ const FormEditTentangKegiatan = () => {
         formData.append("keterangan", keterangan);
 
         try {
-            await axios.patch(`https://app-katar.vercel.app/tentangKegiatan/${id}`, formData, {
+            await axios.patch(`http://localhost:5000/tentangKegiatan/${id}`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
@@ -107,7 +107,7 @@ const FormEditTentangKegiatan = () => {
                                     )}
                                     {image && typeof image === 'string' && (
                                         <div style={{ marginBottom: '10px', marginTop: '10px' }}>
-                                            <img src={`https://app-katar.vercel.app/uploads/tentangKegiatan/${image}`} alt={image} style={{ maxWidth: '200px' }} />
+                                            <img src={`http://localhost:5000/uploads/tentangKegiatan/${image}`} alt={image} style={{ maxWidth: '200px' }} />
                                             <p>{image}</p>
                                         </div>
                                     )}

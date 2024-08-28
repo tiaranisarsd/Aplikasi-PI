@@ -14,7 +14,7 @@ const FormEditDokumentasi = () => {
     useEffect(() => {
         const getDokumentasiById = async () => {
             try {
-                const response = await axios.get(`https://app-katar.vercel.app/dokumentasi/${id}`);
+                const response = await axios.get(`http://localhost:5000/dokumentasi/${id}`);
                 setKegiatanName(response.data.kegiatanName);
                 setImageKegiatan(response.data.imageKegiatan);
             } catch (error) {
@@ -35,7 +35,7 @@ const FormEditDokumentasi = () => {
         }
 
         try {
-            await axios.patch(`https://app-katar.vercel.app/dokumentasi/${id}`, formData, {
+            await axios.patch(`http://localhost:5000/dokumentasi/${id}`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
@@ -91,7 +91,7 @@ const FormEditDokumentasi = () => {
                                     )}
                                     {imageKegiatan && typeof imageKegiatan === 'string' && (
                                         <div style={{ marginBottom: '10px', marginTop: '10px' }}>
-                                            <img src={`https://app-katar.vercel.app/uploads/dokumentasi/${imageKegiatan}`} alt={imageKegiatan} style={{ maxWidth: '200px' }} />
+                                            <img src={`http://localhost:5000/uploads/dokumentasi/${imageKegiatan}`} alt={imageKegiatan} style={{ maxWidth: '200px' }} />
                                             <p>{imageKegiatan}</p>
                                         </div>
                                     )}

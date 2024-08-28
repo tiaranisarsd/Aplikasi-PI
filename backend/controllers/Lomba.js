@@ -4,20 +4,9 @@ import User from "../models/UserModel.js";
 export const getAllLomba = async (req, res) => {
     try {
         let response;
-        // if (req.role === "admin") {
             response = await Lomba.findAll({
                 attributes: ['id','uuid', 'lombaName'],
             });
-        // } else {
-        //     response = await Lomba.findAll({
-        //         attributes: ['uuid', 'lombaName'],
-                
-        //         include: [{
-        //             model: User,
-        //             attributes: ['name', 'email']
-        //         }]
-        //     });
-        // }
         res.status(200).json(response);
     } catch (error) {
         res.status(500).json({ msg: error.message });
@@ -31,10 +20,6 @@ export const getLombaById = async (req, res) => {
             where: {
                 uuid: req.params.id
             },
-            // include: [{
-            //     model: User,
-            //     attributes: ['name', 'email']
-            // }]
         });
         if (!lomba) return res.status(404).json({ msg: "Data tidak ditemukan" });
         

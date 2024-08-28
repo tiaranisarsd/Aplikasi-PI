@@ -1,5 +1,3 @@
-// controllers/pendaftaran.js
-
 import Pendaftaran from "../models/PendaftaranModel.js";
 import User from "../models/UserModel.js";
 import { Op } from "sequelize";
@@ -11,7 +9,7 @@ export const getPendaftaran = async (req, res) => {
         let response;
         if (req.role === "admin") {
             response = await Pendaftaran.findAll({
-                attributes: ['id', 'uuid', 'name'],
+                attributes: ['id', 'uuid', 'name', 'rw'],
                 include: [{
                     model: User,
                     attributes: ['name', 'email']
@@ -25,7 +23,7 @@ export const getPendaftaran = async (req, res) => {
             });
         } else {
             response = await Pendaftaran.findAll({
-                attributes: ['id','uuid', 'name'],
+                attributes: ['id','uuid', 'name', 'rw'],
                 where: {
                     userId: req.userId
                 },
@@ -50,7 +48,7 @@ export const getPendaftaran = async (req, res) => {
 export const getPendaftaranById = async (req, res) => {
     try {
         const pendaftaran = await Pendaftaran.findOne({
-            attributes: ['id','uuid', 'name'],
+            attributes: ['id','uuid', 'name', 'rw'],
             where: {
                 uuid: req.params.id,
 
@@ -75,10 +73,11 @@ export const getPendaftaranById = async (req, res) => {
 }
 
 export const createPendaftaran = async (req, res) => {
-    const { name, lombaId, categoryId } = req.body;
+    const { name, rw, lombaId, categoryId } = req.body;
     try {
         await Pendaftaran.create({
             name: name,
+            rw: rw,
             lombaId: lombaId,
             categoryId: categoryId,
             userId: req.userId
@@ -97,8 +96,8 @@ export const updatePendaftaran = async (req, res) => {
             }
         });
         if (!pendaftaran) return res.status(404).json({ msg: "Data tidak ditemukan" });
-        const { name, lombaId, categoryId } = req.body;
-        await Pendaftaran.update({ name, lombaId, categoryId }, {
+        const { name, rw, lombaId, categoryId } = req.body;
+        await Pendaftaran.update({ name, rw, lombaId, categoryId }, {
             where: {
                 uuid: req.params.id,
             }

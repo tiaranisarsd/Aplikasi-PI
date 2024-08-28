@@ -20,7 +20,7 @@ const FormAddLomba = () => {
           return;
       }
         try {
-          await axios.post("https://app-katar.vercel.app/Lomba", {
+          await axios.post("http://localhost:5000/Lomba", {
             lombaName: lombaName,
             lombaId: lomba.id,
           });
@@ -34,7 +34,7 @@ const FormAddLomba = () => {
 
       const getLomba = async () => {
         try {
-            const response = await axios.get("https://app-katar.vercel.app/Lomba");
+            const response = await axios.get("http://localhost:5000/Lomba");
             setLomba(response.data);
         } catch (error) {
             console.error("Error fetching Lomba:", error);

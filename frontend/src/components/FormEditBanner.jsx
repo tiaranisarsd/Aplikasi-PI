@@ -13,7 +13,7 @@ const FormEditBanner = () => {
     useEffect(() => {
         const getBannerById = async () => {
             try {
-                const response = await axios.get(`https://app-katar.vercel.app/banner/${id}`);
+                const response = await axios.get(`http://localhost:5000/banner/${id}`);
                 setBannerName(response.data.bannerName);
                 if (response.data.imageBanner) {
                     setImageBanner(response.data.imageBanner);
@@ -38,7 +38,7 @@ const FormEditBanner = () => {
         }
 
         try {
-            await axios.patch(`https://app-katar.vercel.app/banner/${id}`, formData, {
+            await axios.patch(`http://localhost:5000/banner/${id}`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
@@ -95,7 +95,7 @@ const FormEditBanner = () => {
                                     )}
                                     {imageBanner && typeof imageBanner === 'string' && (
                                         <div style={{ marginBottom: '10px', marginTop: '10px' }}>
-                                            <img src={`https://app-katar.vercel.app/uploads/banner/${imageBanner}`} alt={imageBanner} style={{ maxWidth: '200px' }} />
+                                            <img src={`http://localhost:5000/uploads/banner/${imageBanner}`} alt={imageBanner} style={{ maxWidth: '200px' }} />
                                             <p>{imageBanner}</p>
                                         </div>
                                     )}

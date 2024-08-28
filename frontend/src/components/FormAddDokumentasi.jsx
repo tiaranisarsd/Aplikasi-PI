@@ -27,7 +27,7 @@ const FormAddDokumentasi = () => {
             formData.append("kegiatanName", kegiatanName);
             formData.append("imageKegiatan", imageKegiatan);
 
-            await axios.post("https://app-katar.vercel.app/dokumentasi", formData, {
+            await axios.post("http://localhost:5000/dokumentasi", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -44,7 +44,7 @@ const FormAddDokumentasi = () => {
 
     const getDokumentasi = async () => {
         try {
-            const response = await axios.get("https://app-katar.vercel.app/dokumentasi");
+            const response = await axios.get("http://localhost:5000/dokumentasi");
             setDokumentasi(response.data);
         } catch (error) {
             console.error("Error fetching dokumentasi:", error);

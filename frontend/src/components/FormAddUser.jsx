@@ -19,7 +19,7 @@ const FormAddUser = () => {
         return;
     }
     try {
-      await axios.post("https://app-katar.vercel.app/users", {
+      await axios.post("http://localhost:5000/users", {
         name: name,
         email: email,
         password: password,

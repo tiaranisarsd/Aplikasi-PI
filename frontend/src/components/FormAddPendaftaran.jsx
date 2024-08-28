@@ -8,7 +8,8 @@ const FormAddPendaftaran = () => {
     const [category, setCategory] = useState([]);
     const [name, setNamePemain] = useState("");
     const [lombaId, setLombaId] = useState("");
-    const [categoryId, setCategoryId] = useState(null); // Change to single value
+    const [rw, setRw] = useState("");  
+    const [categoryId, setCategoryId] = useState(null); 
     const [msg, setMsg] = useState("");
     const navigate = useNavigate();
 
@@ -22,6 +23,10 @@ const FormAddPendaftaran = () => {
             setMsg("Nama harus diisi.");
             return;
         }
+        if (!rw) {
+            setMsg("Rw harus dipilih.");
+            return;
+        }
         if (!lombaId) {
             setMsg("Lomba harus dipilih.");
             return;
@@ -32,8 +37,9 @@ const FormAddPendaftaran = () => {
         }
 
         try {
-            await axios.post("https://app-katar.vercel.app/Pendaftaran", {
+            await axios.post("http://localhost:5000/Pendaftaran", {
                 name: name,
+                rw: rw,
                 lombaId: lombaId,
                 categoryId: categoryId 
             });
@@ -47,7 +53,7 @@ const FormAddPendaftaran = () => {
 
     const getLomba = async () => {
         try {
-            const response = await axios.get("https://app-katar.vercel.app/Lomba");
+            const response = await axios.get("http://localhost:5000/Lomba");
             setLomba(response.data);
         } catch (error) {
             console.error("Error fetching lomba:", error);
@@ -56,7 +62,7 @@ const FormAddPendaftaran = () => {
 
     const getCategoryByLomba = async (lombaId) => {
         try {
-            const response = await axios.get(`https://app-katar.vercel.app/category/lomba/${lombaId}`);
+            const response = await axios.get(`http://localhost:5000/category/lomba/${lombaId}`);
             setCategory(response.data);
         } catch (error) {
             console.error("Error fetching categories:", error);
@@ -94,6 +100,29 @@ const FormAddPendaftaran = () => {
                                     />
                                 </div>
                             </div>
+
+                            <div className="field">
+                            <label style={{ color: hslValue}} className="label">Rw</label>
+                            <div className="control">
+                                <div className="select is-fullwidth">
+                                    <select
+                                        value={rw}
+                                        onChange={(e) => setRw(e.target.value)}
+                                    >
+                                        <option value="" disabled>Pilih Rw</option>
+                                        <option value={1}>1</option>
+                                        <option value={2}>2</option>
+                                        <option value={3}>3</option>
+                                        <option value={4}>4</option>
+                                        <option value={5}>5</option>
+                                        <option value={6}>6</option>
+                                        <option value={7}>7</option>
+                                        <option value={8}>8</option>
+                                        <option value={9}>9</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
 
                             <div className="field">
                                 <label style={{color: hslValue}} className="label">Lomba</label>

@@ -12,7 +12,7 @@ const PendaftaranList = () => {
 
     const getPendaftaran = async () => {
         try {
-            const response = await axios.get("https://app-katar.vercel.app/Pendaftaran");
+            const response = await axios.get("http://localhost:5000/Pendaftaran");
             setPendaftaran(response.data);
         } catch (error) {
             console.error("Error fetching Pendaftaran:", error);
@@ -21,7 +21,7 @@ const PendaftaranList = () => {
 
     const deletePendaftaran = async (PendaftaranId) => {
         try {
-            await axios.delete(`https://app-katar.vercel.app/Pendaftaran/${PendaftaranId}`);
+            await axios.delete(`http://localhost:5000/Pendaftaran/${PendaftaranId}`);
             getPendaftaran();
         } catch (error) {
             console.error("Error deleting Pendaftaran:", error);
@@ -40,6 +40,7 @@ const PendaftaranList = () => {
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
+                        <th>Rw</th>
                         <th>Lomba</th>
                         <th>Kategori</th>
                         <th>Dibuat Oleh</th>
@@ -52,6 +53,7 @@ const PendaftaranList = () => {
                         <tr key={pendaftaran.uuid}>
                             <td>{index + 1}</td>
                             <td>{pendaftaran.name}</td>
+                            <td>{pendaftaran.rw}</td>
                             <td>{pendaftaran.lomba.lombaName}</td>
                             <td>{pendaftaran.category.categoryName}</td>
                             <td>{pendaftaran.user.name}</td>

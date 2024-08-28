@@ -62,7 +62,7 @@ app.use(session({
 
 app.use(cors({
     credentials: true,
-    origin: 'https://aplikasi-katarkym.vercel.app/dashboard'
+    origin: 'http://localhost:3000'
 }));
 
 
