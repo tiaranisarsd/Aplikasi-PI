@@ -28,14 +28,11 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// Serve static files in uploads directory
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/uploads/banner', express.static(path.join(__dirname, 'banner')));
 app.use('/uploads/dokumentasi', express.static(path.join(__dirname, 'dokumentasi')));
 app.use('/uploads/tentangKegiatan', express.static(path.join(__dirname, 'tentangKegiatan')));
 
-// // Serve static files di direktori uploads
-// app.use('/uploads', express.static('uploads'));
 
 
 // (async()=> {
@@ -62,7 +59,7 @@ app.use(session({
 
 app.use(cors({
     credentials: true,
-    origin: 'http://localhost:3000'
+    origin: process.env.FRONTEND_URL
 }));
 
 
