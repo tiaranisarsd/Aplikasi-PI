@@ -1,5 +1,5 @@
 //Create a user
-POST http://localhost:5000/users
+POST http://194.59.165.159:5000/users
 Content-Type: application/json
 
 {
@@ -12,15 +12,15 @@ Content-Type: application/json
 
 ###
 //get All Users
-GET http://localhost:5000/users
+GET http://194.59.165.159:5000/users
 
 ###
 //Get Single Users
-GET http://localhost:5000/users/ad71feda-fc92-476b-bdc2-e670be7f347d
+GET http://194.59.165.159:5000/users/ad71feda-fc92-476b-bdc2-e670be7f347d
 
 ###
 //Update Users
-PATCH http://localhost:5000/users/c2c1b1d0-f640-4bc2-941d-f914a9f73c1c
+PATCH http://194.59.165.159:5000/users/c2c1b1d0-f640-4bc2-941d-f914a9f73c1c
 Content-Type: application/json
 
 {
@@ -33,11 +33,11 @@ Content-Type: application/json
 
 ###
 //Delete a Users
-DELETE http://localhost:5000/users/7b42670f-20ad-4a9d-9324-7fccd4fcce42
+DELETE http://194.59.165.159:5000/users/7b42670f-20ad-4a9d-9324-7fccd4fcce42
 
 ###
 // Login Users
-POST http://localhost:5000/login
+POST http://194.59.165.159:5000/login
 Content-Type: application/json
 
 {
@@ -47,7 +47,7 @@ Content-Type: application/json
 
 ###
 // Login sebagai Users
-POST http://localhost:5000/login
+POST http://194.59.165.159:5000/login
 Content-Type: application/json
 
 {
@@ -56,23 +56,23 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:5000/me
+GET http://194.59.165.159:5000/me
 
 ###
-DELETE http://localhost:5000/logout
+DELETE http://194.59.165.159:5000/logout
 
 
 ###
 // Get All Pendaftaran
-GET http://localhost:5000/pendaftaran
+GET http://194.59.165.159:5000/pendaftaran
 
 ###
 // Get Single Pendaftaran
-GET http://localhost:5000/pendaftaran/cc7c016b-ac7b-4f03-b565-94bc23a66e48
+GET http://194.59.165.159:5000/pendaftaran/cc7c016b-ac7b-4f03-b565-94bc23a66e48
 
 ###
 // POST Data Pendaftaran
-POST http://localhost:5000/pendaftaran
+POST http://194.59.165.159:5000/pendaftaran
 Content-Type: application/json
 
 {
@@ -84,7 +84,7 @@ Content-Type: application/json
 
 ###
 // UPDATE Data Pendaftaran
-PATCH http://localhost:5000/pendaftaran/c3b5ba7e-a63b-4ba5-9174-82d46a4a05ec
+PATCH http://194.59.165.159:5000/pendaftaran/c3b5ba7e-a63b-4ba5-9174-82d46a4a05ec
 Content-Type: application/json
 
 {
@@ -96,20 +96,20 @@ Content-Type: application/json
 
 ###
 // Delete Data Pendaftaran
-DELETE http://localhost:5000/pendaftaran/b1664db9-a8ff-483b-8d4f-06a60915417
+DELETE http://194.59.165.159:5000/pendaftaran/b1664db9-a8ff-483b-8d4f-06a60915417
 
 
 ###
 // Get All Lomba
-GET http://localhost:5000/lomba
+GET http://194.59.165.159:5000/lomba
 
 ###
 // Get All Category
-GET http://localhost:5000/category
+GET http://194.59.165.159:5000/category
 
 ###
 // POST Data Category
-POST http://localhost:5000/category
+POST http://194.59.165.159:5000/category
 Content-Type: application/json
 
 {
@@ -120,7 +120,7 @@ Content-Type: application/json
 
 ###
 //Update Lomba
-PATCH http://localhost:5000/lomba/fe0beebe-95f9-4a9c-a4cc-dd50c95ec5d9
+PATCH http://194.59.165.159:5000/lomba/fe0beebe-95f9-4a9c-a4cc-dd50c95ec5d9
 Content-Type: application/json
 
 {
@@ -129,7 +129,7 @@ Content-Type: application/json
 
 ###
 //Update Category
-PATCH http://localhost:5000/category/99d30b1b-23fa-48fc-88b4-944345ec101f
+PATCH http://194.59.165.159:5000/category/99d30b1b-23fa-48fc-88b4-944345ec101f
 Content-Type: application/json
 
 {
@@ -138,28 +138,28 @@ Content-Type: application/json
 
 ###
 //Delete Lomba
-DELETE http://localhost:5000/lomba/4e535098-77d0-4dbb-a323-884aca705c97
+DELETE http://194.59.165.159:5000/lomba/4e535098-77d0-4dbb-a323-884aca705c97
 
 ###
 //Delete Category
-DELETE http://localhost:5000/category/6f7cc3e7-a2e7-4337-9812-20c351cebf52
+DELETE http://194.59.165.159:5000/category/6f7cc3e7-a2e7-4337-9812-20c351cebf52
 
 ###
 //Category By Lomba
-GET http://localhost:5000/category/lomba/1
+GET http://194.59.165.159:5000/category/lomba/1
 
 ###
 // Get All Dashboard
-GET http://localhost:5000/Dashboard
+GET http://194.59.165.159:5000/Dashboard
 
 ###
 // Get Single Dashboard
-GET http://localhost:5000/dashboard/97c2ec2f-85f1-4daa-876c-ee711cf7f0c9
+GET http://194.59.165.159:5000/dashboard/97c2ec2f-85f1-4daa-876c-ee711cf7f0c9
 
 
 ###
 // POST Data Dashboard
-POST http://localhost:5000/Dashboard
+POST http://194.59.165.159:5000/Dashboard
 Content-Type: application/json
 
 {
@@ -171,7 +171,7 @@ Content-Type: application/json
 
 ###
 //Update Data Dashboard
-PATCH http://localhost:5000/Dashboard/97c2ec2f-85f1-4daa-876c-ee711cf7f0c9
+PATCH http://194.59.165.159:5000/Dashboard/97c2ec2f-85f1-4daa-876c-ee711cf7f0c9
 Content-Type: application/json
 
 {
@@ -184,20 +184,20 @@ Content-Type: application/json
 
 ###
 //Delete Data Dashboard
-DELETE http://localhost:5000/Dashboard/0204e099-b2a5-4feb-ac0d-1886b7fa62a9
+DELETE http://194.59.165.159:5000/Dashboard/0204e099-b2a5-4feb-ac0d-1886b7fa62a9
 
 ###
 // Get All Banner
-GET http://localhost:5000/Banner
+GET http://194.59.165.159:5000/Banner
 
 ###
 // Get Single banner
-GET http://localhost:5000/banner/a94420e0-9e7d-4ea9-afe3-605b60cc88aa
+GET http://194.59.165.159:5000/banner/a94420e0-9e7d-4ea9-afe3-605b60cc88aa
 
 
 ###
 // POST Data Banner
-POST http://localhost:5000/Banner
+POST http://194.59.165.159:5000/Banner
 Content-Type: application/json
 
 {
@@ -208,7 +208,7 @@ Content-Type: application/json
 
 ###
 // Update Data Banner
-PATCH http://localhost:5000/banner/a94420e0-9e7d-4ea9-afe3-605b60cc88aa
+PATCH http://194.59.165.159:5000/banner/a94420e0-9e7d-4ea9-afe3-605b60cc88aa
 Content-Type: application/json
 
 {
@@ -219,20 +219,20 @@ Content-Type: application/json
 
 ###
 //Delete Data Banner
-DELETE http://localhost:5000/Banner/gdvsdvsdfsf
+DELETE http://194.59.165.159:5000/Banner/gdvsdvsdfsf
 
 ###
 // Get All Dokumentasi
-GET http://localhost:5000/Dokumentasi
+GET http://194.59.165.159:5000/Dokumentasi
 
 ###
 // Get Single Dokumentasi
-GET http://localhost:5000/Dokumentasi/92223f36-7b5b-4500-ae84-2324025f8eee
+GET http://194.59.165.159:5000/Dokumentasi/92223f36-7b5b-4500-ae84-2324025f8eee
 
 
 ###
 // POST Data Dokumentasi
-POST http://localhost:5000/Dokumentasi
+POST http://194.59.165.159:5000/Dokumentasi
 Content-Type: application/json
 
 {
@@ -243,20 +243,20 @@ Content-Type: application/json
 
 ###
 //Delete Data Dokuemntasi
-DELETE http://localhost:5000/Dokumentasi/f03e3889-8615-409c-a641-c64c5829028e
+DELETE http://194.59.165.159:5000/Dokumentasi/f03e3889-8615-409c-a641-c64c5829028e
 
 ###
 // Get All Tentang Kegiatan
-GET http://localhost:5000/TentangKegiatan
+GET http://194.59.165.159:5000/TentangKegiatan
 
 ###
 // Get Single TentangKegiatan
-GET http://localhost:5000/TentangKegiatan/114f1f91-fd8b-4490-9752-cfdc1abbda17
+GET http://194.59.165.159:5000/TentangKegiatan/114f1f91-fd8b-4490-9752-cfdc1abbda17
 
 
 ###
 // POST Data TentangKegiatan
-POST http://localhost:5000/TentangKegiatan
+POST http://194.59.165.159:5000/TentangKegiatan
 Content-Type: application/json
 
 {
@@ -269,4 +269,4 @@ Content-Type: application/json
 
 ###
 //Delete Data TentangKegiatan
-DELETE http://localhost:5000/TentangKegiatan/114f1f91-fd8b-4490-9752-cfdc1abbda17
+DELETE http://194.59.165.159:5000/TentangKegiatan/114f1f91-fd8b-4490-9752-cfdc1abbda17

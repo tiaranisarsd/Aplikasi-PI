@@ -37,7 +37,7 @@ const FormAddDashboard = () => {
             formData.append("categoryId", JSON.stringify(categoryId));
             formData.append("aturanLomba", aturanLomba);
 
-            await axios.post("http://localhost:5000/dashboard", formData, {
+            await axios.post("http://194.59.165.159:5000/dashboard", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -52,7 +52,7 @@ const FormAddDashboard = () => {
 
     const getLomba = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/Lomba");
+            const response = await axios.get("http://194.59.165.159:5000/Lomba");
             setLomba(response.data);
         } catch (error) {
             console.error("Error fetching lomba:", error);
@@ -61,7 +61,7 @@ const FormAddDashboard = () => {
 
     const getCategoriesByLomba = async (lombaId) => {
         try {
-            const url = lombaId ? `http://localhost:5000/category/lomba/${lombaId}` : "http://localhost:5000/Category";
+            const url = lombaId ? `http://194.59.165.159:5000/category/lomba/${lombaId}` : "http://194.59.165.159:5000/Category";
             const response = await axios.get(url);
             setCategory(response.data);
         } catch (error) {

@@ -37,7 +37,7 @@ const FormAddPendaftaran = () => {
         }
 
         try {
-            await axios.post("http://localhost:5000/Pendaftaran", {
+            await axios.post("http://194.59.165.159:5000/Pendaftaran", {
                 name: name,
                 rw: rw,
                 lombaId: lombaId,
@@ -53,7 +53,7 @@ const FormAddPendaftaran = () => {
 
     const getLomba = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/Lomba");
+            const response = await axios.get("http://194.59.165.159:5000/Lomba");
             setLomba(response.data);
         } catch (error) {
             console.error("Error fetching lomba:", error);
@@ -62,7 +62,7 @@ const FormAddPendaftaran = () => {
 
     const getCategoryByLomba = async (lombaId) => {
         try {
-            const response = await axios.get(`http://localhost:5000/category/lomba/${lombaId}`);
+            const response = await axios.get(`http://194.59.165.159:5000/category/lomba/${lombaId}`);
             setCategory(response.data);
         } catch (error) {
             console.error("Error fetching categories:", error);

@@ -33,7 +33,7 @@ const FormAddTentangKegiatan = () => {
             formData.append("tanggal", tanggal);
             formData.append("keterangan", keterangan);
 
-            await axios.post("http://localhost:5000/tentangKegiatan", formData, {
+            await axios.post("http://194.59.165.159:5000/tentangKegiatan", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -48,7 +48,7 @@ const FormAddTentangKegiatan = () => {
 
     const getTentangKegiatan = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/tentangKegiatan");
+            const response = await axios.get("http://194.59.165.159:5000/tentangKegiatan");
             setTentangKegiatan(response.data);
         } catch (error) {
             console.error("Error fetching tentangKegiatan:", error);

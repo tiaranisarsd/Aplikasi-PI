@@ -18,7 +18,7 @@ const FormEditPendaftaran = () => {
         const getPendaftaranById = async () => {
             try {
                 const response = await axios.get(
-                    `http://localhost:5000/pendaftaran/${id}`
+                    `http://194.59.165.159:5000/pendaftaran/${id}`
                 );
                 setName(response.data.name);
                 setRw(response.data.rw);  
@@ -26,7 +26,7 @@ const FormEditPendaftaran = () => {
                 setCategoryId(response.data.category.id ? parseInt(response.data.category.id) : null);
 
                 if (response.data.lomba.id) {
-                    const categoryResponse = await axios.get(`http://localhost:5000/category/lomba/${response.data.lomba.id}`);
+                    const categoryResponse = await axios.get(`http://194.59.165.159:5000/category/lomba/${response.data.lomba.id}`);
                     setCategory(categoryResponse.data);
                 }
             } catch (error) {
@@ -38,7 +38,7 @@ const FormEditPendaftaran = () => {
 
         const getLomba = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/Lomba");
+                const response = await axios.get("http://194.59.165.159:5000/Lomba");
                 setLomba(response.data);
             } catch (error) {
                 console.error("Error fetching lomba:", error);
@@ -57,7 +57,7 @@ const FormEditPendaftaran = () => {
 
     const getCategoryByLomba = async (lombaId) => {
         try {
-            const response = await axios.get(`http://localhost:5000/category/lomba/${lombaId}`);
+            const response = await axios.get(`http://194.59.165.159:5000/category/lomba/${lombaId}`);
             setCategory(response.data);
         } catch (error) {
             console.error("Error fetching categories:", error);
@@ -75,7 +75,7 @@ const FormEditPendaftaran = () => {
             return;
         }
         try {
-            await axios.patch(`http://localhost:5000/pendaftaran/${id}`, {
+            await axios.patch(`http://194.59.165.159:5000/pendaftaran/${id}`, {
                 name: name,
                 lombaId: lombaId,
                 categoryId: categoryId.toString(),

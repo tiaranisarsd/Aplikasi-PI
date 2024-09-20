@@ -21,7 +21,7 @@ const FormAddCategory = () => {
             return;
         }
         try {
-          await axios.post("http://localhost:5000/Category", {
+          await axios.post("http://194.59.165.159:5000/Category", {
             categoryName: categoryName,
             lombaId
           });
@@ -35,7 +35,7 @@ const FormAddCategory = () => {
 
       const getLomba = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/Lomba");
+            const response = await axios.get("http://194.59.165.159:5000/Lomba");
             setLomba(response.data);
         } catch (error) {
             console.error("Error fetching lomba:", error);

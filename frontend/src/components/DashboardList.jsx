@@ -31,7 +31,7 @@ const DashboardList = () => {
 
     const getDashboard = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/dashboard");
+            const response = await axios.get("http://194.59.165.159:5000/dashboard");
             setDashboard(response.data);
         } catch (error) {
             console.error("Error fetching dashboard:", error);
@@ -40,7 +40,7 @@ const DashboardList = () => {
 
     const getBanner = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/banner");
+            const response = await axios.get("http://194.59.165.159:5000/banner");
             setBanners(response.data);
             console.log("getBanner:", response.data);
         } catch (error) {
@@ -50,7 +50,7 @@ const DashboardList = () => {
 
     const getLomba = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/Lomba");
+            const response = await axios.get("http://194.59.165.159:5000/Lomba");
             setLombaId(response.data[0].id);
         } catch (error) {
             console.error("Error fetching lomba:", error);
@@ -59,7 +59,7 @@ const DashboardList = () => {
 
     const getCategory = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/Category");
+            const response = await axios.get("http://194.59.165.159:5000/Category");
             setCategories(response.data);
         } catch (error) {
             console.error("Error fetching Category:", error);
@@ -68,7 +68,7 @@ const DashboardList = () => {
 
     // const getCategoriesByLomba = async (lombaId) => {
     //     try {
-    //         const response = await axios.get(`http://localhost:5000/category/lomba/${lombaId}`);
+    //         const response = await axios.get(`http://194.59.165.159:5000/category/lomba/${lombaId}`);
     //         setCategories(response.data);
     //     } catch (error) {
     //         console.error("Error fetching categories by lomba:", error);
@@ -94,7 +94,7 @@ const DashboardList = () => {
             <div className="slideshow-container">
                     {banner.map((banner, index) => (
                         <div key={index} className="mySlides fade">
-                            <img style={{borderRadius: '12px'}} src={`http://localhost:5000/uploads/banner/${banner.imageBanner}`} alt={banner.bannerName} />
+                            <img style={{borderRadius: '12px'}} src={`http://194.59.165.159:5000/uploads/banner/${banner.imageBanner}`} alt={banner.bannerName} />
                         </div>
                     ))}
 
@@ -105,7 +105,7 @@ const DashboardList = () => {
                 {dashboard.map((item, index) => (
                     <article key={index} className="card">
                         <h1 style={{ color: hslValue }} className="title">{item.lomba ? item.lomba.lombaName : "Nama Lomba"}</h1>
-                        <img src={`http://localhost:5000/uploads/${item.imageUrl}`} alt={item.lomba ? item.lomba.lombaName : "Image"} className="featured-image" />
+                        <img src={`http://194.59.165.159:5000/uploads/${item.imageUrl}`} alt={item.lomba ? item.lomba.lombaName : "Image"} className="featured-image" />
                         <h2>Kategori :</h2>
                         <nav className="list-kategori">
                             <ul>

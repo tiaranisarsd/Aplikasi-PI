@@ -16,7 +16,7 @@ const FormAddBanner = () => {
             formData.append("bannerName", bannerName);
             formData.append("imageBanner", imageBanner); // Memasukkan file gambar ke FormData
 
-            await axios.post("http://localhost:5000/Banner", formData, {
+            await axios.post("http://194.59.165.159:5000/Banner", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data", // Header penting untuk FormData
                 },

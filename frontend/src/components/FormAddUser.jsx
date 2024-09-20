@@ -19,7 +19,7 @@ const FormAddUser = () => {
         return;
     }
     try {
-      await axios.post("http://localhost:5000/users", {
+      await axios.post("http://194.59.165.159:5000/users", {
         name: name,
         email: email,
         password: password,

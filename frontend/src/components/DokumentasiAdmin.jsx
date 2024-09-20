@@ -12,7 +12,7 @@ const DokumentasiAdmin = () => {
 
     const getDokumentasi = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/dokumentasi');
+            const response = await axios.get('http://194.59.165.159:5000/dokumentasi');
             setDokumentasi(response.data);
         } catch (error) {
             console.error('Error fetching dokumentasi:', error);
@@ -21,7 +21,7 @@ const DokumentasiAdmin = () => {
 
     const deleteDokumentasi = async (dokumentasiId) => {
         try {
-            await axios.delete(`http://localhost:5000/dokumentasi/${dokumentasiId}`);
+            await axios.delete(`http://194.59.165.159:5000/dokumentasi/${dokumentasiId}`);
             getDokumentasi();
         } catch (error) {
             console.error('Error deleting dokumentasi:', error);
@@ -54,7 +54,7 @@ const DokumentasiAdmin = () => {
                             <td>{index + 1}</td>
                             <td>{dokumentasi.kegiatanName}</td>
                             <td>
-                            <a href={`http://localhost:5000/uploads/dokumentasi/${dokumentasi.imageKegiatan}`} target="_blank" rel="noopener noreferrer">
+                            <a href={`http://194.59.165.159:5000/uploads/dokumentasi/${dokumentasi.imageKegiatan}`} target="_blank" rel="noopener noreferrer">
                                 {dokumentasi.imageKegiatan}
                             </a>
                             </td>
