@@ -2,10 +2,15 @@
   "name": "aplikasi-pi",
   "version": "1.0.0",
   "description": "",
+  "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd backend && nodemon index"
+    "start": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "backend": "cd backend && nodemon index",
+    "frontend": "cd frontend && npm start"
+  },
+  "dependencies": {
+    "concurrently": "^7.6.0"
   },
   "keywords": [],
   "author": "",

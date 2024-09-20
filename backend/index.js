@@ -59,7 +59,7 @@ app.use(session({
 
 app.use(cors({
     credentials: true,
-    origin: process.env.FRONTEND_URL
+    origin: 3000
 }));
 
 
@@ -79,6 +79,6 @@ app.use(TentangKegiatanRoute);
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-app.listen(process.env.APP_PORT, ()=> {
+app.listen(5000, ()=> {
     console.log('Server up and running...');
 });
